@@ -473,6 +473,9 @@ img {
 }
 
 @media (max-width: 991px) {
+  .navbar {
+    height: 100%;
+  }
   .nav-dropdown-menu {
     position: static;
     transform: none !important;
@@ -1665,6 +1668,15 @@ img {
 }
 
 @media (max-width: 991px) {
+  .footer {
+    background: var(--forest);
+    padding: 0 0 0 0;
+    position: relative;
+  }
+  .footer-logo img {
+    width: 120px;
+    margin-bottom: 16px;
+  }
   .divisions-grid {
     grid-template-columns: 1fr;
     gap: 0;

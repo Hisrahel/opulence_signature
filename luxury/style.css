@@ -1609,6 +1609,14 @@ img {
   }
 }
 @media (max-width: 991px) {
+  .footer {
+    background: var(--forest);
+    padding: 20px 0 0 0;
+    position: relative;
+  }
+  .navbar {
+    height: 100%;
+  }
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
