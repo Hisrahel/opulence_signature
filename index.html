@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Opulence Signature - Luxury Hair & Beauty</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="images/signature.png" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Page Loader -->
+    <div id="page-loader">
+      <div class="loader-wordmark"><span class="loader-o">O</span>PULENCE</div>
+      <div class="loader-sub">SIGNATURE</div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- ==================== TOP BAR ==================== -->
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="topbar-left">
+            <i class="fa-regular fa-calendar"></i>
+            <span id="info"></span>
+          </div>
+          <div class="topbar-right">
+            <a href="#" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="Email"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images/signature.png" alt="Opulence Signature" />
+          <span class="brand-text">OPULENCE <em>Signature</em></span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="toggler-bar"></span>
+          <span class="toggler-bar"></span>
+          <span class="toggler-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+
+            <!-- Brands dropdown -->
+            <li class="nav-item nav-dropdown">
+              <a
+                class="nav-link nav-dropdown-toggle"
+                href="#divisions"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Our Brands <i class="fa-solid fa-chevron-down nav-chevron"></i>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="luxury/index.html" class="nav-dropdown-item">
+                  <div class="ndi-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  </div>
+                  <div class="ndi-text">
+                    <span class="ndi-label">Opulence Luxury</span>
+                    <span class="ndi-sub">Hair Sales</span>
+                  </div>
+                </a>
+                <a href="saloon/index.html" class="nav-dropdown-item">
+                  <div class="ndi-icon">
+                    <i class="fa-solid fa-scissors"></i>
+                  </div>
+                  <div class="ndi-text">
+                    <span class="ndi-label">Opulence Saloon</span>
+                    <span class="ndi-sub">Salon Services & Booking</span>
+                  </div>
+                </a>
+                <a href="tools/index.html" class="nav-dropdown-item">
+                  <div class="ndi-icon">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                  </div>
+                  <div class="ndi-text">
+                    <span class="ndi-label">Opulence Tools</span>
+                    <span class="ndi-sub">Styling & Salon Equipment</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a class="nav-cta" href="saloon/index.html">Book Appointment</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero-bg">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="images/hero.webp"
+        >
+          <source src="images/hero-video.mp4" type="video/mp4" />
+          <!-- Fallback if video not found -->
+        </video>
+        <!-- Fallback image shown when video hasn't loaded or isn't present -->
+        <div
+          class="hero-bg-img"
+          style="background-image: url(&quot;images/hero.webp&quot;)"
+        ></div>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-body">
+        <div class="hero-eyebrow reveal-hero">
+          <span class="eyebrow-pill">Premium Hairs Studio · Nigeria</span>
+          <span class="eyebrow-divider">-</span>
+          <span>Luxury Hairs, Professional Stylings & Beauty tools.</span>
+        </div>
+
+        <h1 class="hero-title reveal-hero delay-1">
+          Where Luxury<br />
+          Meets <em>Artistry.</em>
+        </h1>
+
+        <p class="hero-desc reveal-hero delay-2">
+          Three worlds. One signature. Hair sales, expert salon services,<br
+            class="d-none d-lg-block"
+          />
+          and professional beauty tools - curated for the discerning woman.
+        </p>
+
+        <div class="hero-actions reveal-hero delay-3">
+          <a href="#divisions" class="btn-hero-primary"
+            ><span>Explore Our Brands</span></a
+          >
+          <a href="saloon/index.html" class="btn-hero-ghost">Book a Session</a>
+        </div>
+
+        <div class="hero-stats reveal-hero delay-4">
+          <div class="hstat">
+            <span class="hstat-num" data-count="500">0</span
+            ><span class="hstat-num-suffix">+</span>
+            <span class="hstat-label">Happy Clients</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <span class="hstat-num" data-count="5">0</span
+            ><span class="hstat-num-suffix">yrs</span>
+            <span class="hstat-label">Experience</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <span class="hstat-num" data-count="3">0</span
+            ><span class="hstat-num-suffix"></span>
+            <span class="hstat-label">Brand Divisions</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ==================== MARQUEE ==================== -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>Luxury Hair Extensions</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Wig Installation</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Bridal Styling</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Treatments</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Professional Tools</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Salon Equipment</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Luxury Hair Extensions</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Wig Installation</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Bridal Styling</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Treatments</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Professional Tools</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Salon Equipment</span><i class="fa-solid fa-diamond gold-dot"></i>
+      </div>
+    </div>
+
+    <!-- ==================== DIVISIONS ==================== -->
+    <section class="divisions" id="divisions">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>Our Three Worlds</span>
+          </div>
+          <h2 class="section-title">
+            One Signature.<br /><em>Three Experiences.</em>
+          </h2>
+          <p class="section-body">
+            Opulence Signature is home to three distinct brands, each crafted
+            for a different facet of your beauty journey.
+          </p>
+        </div>
+
+        <div class="divisions-grid">
+          <!-- Division 1 - Luxury (Hair Sales) -->
+          <div class="division-card reveal delay-1" data-division="luxury">
+            <div class="div-card-img">
+              <img
+                src="images/extension.webp"
+                alt="Opulence Luxury hair sales"
+              />
+              <div class="div-card-overlay"></div>
+              <div class="div-card-badge">Hair Sales</div>
+            </div>
+            <div class="div-card-body">
+              <div class="div-card-num">01</div>
+              <h3>Opulence <em>Luxury</em></h3>
+              <p>
+                Premium, ethically sourced human hair - extensions, bundles,
+                closures, and custom wigs. Crafted for natural finish and
+                lasting wear.
+              </p>
+              <ul class="div-card-features">
+                <li>
+                  <i class="fa-solid fa-check"></i> Hair extensions & bundles
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Custom wigs & closures
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Ethically sourced, grade 10A
+                </li>
+              </ul>
+              <a href="luxury/index.html" class="div-card-cta">
+                <span>Shop Hair</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Division 2 - Saloon (Services) -->
+          <div
+            class="division-card division-card--featured reveal delay-2"
+            data-division="saloon"
+          >
+            <div class="div-card-img">
+              <img src="images/bride.webp" alt="Opulence Saloon services" />
+              <div class="div-card-overlay"></div>
+              <div class="div-card-badge">Salon Services</div>
+              <div class="featured-tag">Most Popular</div>
+            </div>
+            <div class="div-card-body">
+              <div class="div-card-num">02</div>
+              <h3>Opulence <em>Saloon</em></h3>
+              <p>
+                Precision installations, expert styling, hair treatments, and
+                bridal services - delivered by seasoned professionals.
+              </p>
+              <ul class="div-card-features">
+                <li>
+                  <i class="fa-solid fa-check"></i> Wig installation & styling
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Bridal & special occasions
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Consultations & treatments
+                </li>
+              </ul>
+              <a href="saloon/index.html" class="div-card-cta">
+                <span>Book Appointment</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Division 3 - Tools -->
+          <div class="division-card reveal delay-3" data-division="tools">
+            <div class="div-card-img">
+              <img src="images/treatment.png" alt="Professional hair tools" />
+              <div class="div-card-overlay"></div>
+              <div class="div-card-badge">Tools & Equipment</div>
+            </div>
+            <div class="div-card-body">
+              <div class="div-card-num">03</div>
+              <h3>Opulence <em>Tools</em></h3>
+              <p>
+                Professional-grade styling tools and salon equipment - dryers,
+                curlers, straighteners, and full salon setups for the modern
+                stylist.
+              </p>
+              <ul class="div-card-features">
+                <li>
+                  <i class="fa-solid fa-check"></i> Styling tools & dryers
+                </li>
+                <li><i class="fa-solid fa-check"></i> Salon equipment</li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Accessories & supplies
+                </li>
+              </ul>
+              <a href="tools/index.html" class="div-card-cta">
+                <span>Shop Tools</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual reveal-left">
+            <div class="about-img-wrap">
+              <img
+                src="images/sec.webp"
+                alt="Opulence Signature studio"
+                class="about-img-main"
+              />
+              <img
+                src="images/first.webp"
+                alt="Luxury hair"
+                class="about-img-accent"
+              />
+            </div>
+            <div class="about-float-card">
+              <span class="float-card-num">500<sup>+</sup></span>
+              <span class="float-card-label">Satisfied Clients</span>
+            </div>
+            <!-- Spinning badge -->
+            <div class="spin-badge-wrap">
+              <div class="spin-badge">
+                <span style="--i: 1">O</span><span style="--i: 2">P</span>
+                <span style="--i: 3">U</span><span style="--i: 4">L</span>
+                <span style="--i: 5">E</span><span style="--i: 6">N</span>
+                <span style="--i: 7">C</span><span style="--i: 8">E</span>
+                <span style="--i: 9">•</span><span style="--i: 10">S</span>
+                <span style="--i: 11">I</span><span style="--i: 12">G</span>
+                <span style="--i: 13">N</span><span style="--i: 14">A</span>
+                <span style="--i: 15">T</span><span style="--i: 16">U</span>
+                <span style="--i: 17">R</span><span style="--i: 18">E</span>
+                <span style="--i: 19">•</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content reveal-right">
+            <div class="section-eyebrow">
+              <div class="eyebrow-line"></div>
+              <span>About Us</span>
+            </div>
+            <h2 class="section-title">
+              About Opulence<br /><em>Signature</em>
+            </h2>
+            <p class="section-body" style="margin-top: 16px">
+              Opulence Signature is a luxury hair brand dedicated to providing
+              premium wigs, expert styling, and professional hair care
+              solutions. We are passionate about helping women enhance their
+              beauty and confidence through quality products and exceptional
+              services.
+            </p>
+            <p class="section-body" style="margin-top: 14px">
+              Our mission is to deliver elegance, sophistication, and excellence
+              in every experience. Whether you're looking for the perfect wig, a
+              flawless hairstyle, or treatments to maintain healthy hair - we
+              are committed to meeting your needs with professionalism and
+              attention to detail.
+            </p>
+            <p class="section-body" style="margin-top: 14px">
+              At Opulence Signature, we believe that beautiful hair is a
+              powerful form of self-expression. That's why we strive to create
+              looks that not only elevate your appearance but also boost your
+              confidence.
+            </p>
+            <p class="about-closing-statement">
+              Experience the signature of luxury, beauty, and confidence -
+              <em>with Opulence Signature.</em>
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar reveal delay-1">
+                <div class="pillar-icon"><i class="fa-solid fa-gem"></i></div>
+                <div>
+                  <h5>Premium Quality</h5>
+                  <p>
+                    Only the finest, ethically sourced human hair - selected for
+                    softness, durability, and a flawless natural finish.
+                  </p>
+                </div>
+              </div>
+              <div class="pillar reveal delay-2">
+                <div class="pillar-icon">
+                  <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div>
+                  <h5>Expert Craftsmanship</h5>
+                  <p>
+                    Every wig, installation, and styling service is executed by
+                    seasoned professionals with meticulous care.
+                  </p>
+                </div>
+              </div>
+              <div class="pillar reveal delay-3">
+                <div class="pillar-icon"><i class="fa-solid fa-heart"></i></div>
+                <div>
+                  <h5>Confidence in Every Look</h5>
+                  <p>
+                    We tailor each experience to your unique aesthetic - because
+                    beautiful hair is powerful self-expression.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="saloon/index.html"
+              class="btn-primary-luxury mt-4 d-inline-block"
+              ><span>Book a Consultation</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PARALLAX BANNER ==================== -->
+    <div class="parallax-banner">
+      <div class="parallax-bg" id="parallaxBg"></div>
+      <div class="parallax-content reveal">
+        <p class="parallax-eyebrow">Ready to Transform?</p>
+        <h2>Elevate Your Look<br /><em>With Opulence</em></h2>
+        <div class="parallax-actions">
+          <a href="luxury/index.html" class="btn-parallax-outline">Shop Hair</a>
+          <a href="saloon/index.html" class="btn-parallax-primary"
+            ><span>Book Appointment</span></a
+          >
+          <a href="tools/index.html" class="btn-parallax-outline">Shop Tools</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-head text-center reveal">
+          <div class="section-eyebrow" style="justify-content: center">
+            <div class="eyebrow-line"></div>
+            <span>Get In Touch</span>
+          </div>
+          <h2 class="section-title">
+            We'd Love to<br /><em>Hear From You</em>
+          </h2>
+          <p class="section-body" style="max-width: 500px; margin: 12px auto 0">
+            Questions about our services or products? Reach out and our team
+            will get back to you promptly.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal-left">
+            <div class="cinfo-item">
+              <div class="cinfo-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h5>Visit Us</h5>
+                <p>
+                  Lagos address: Shop 18, Jafo plaza, oniba drive, Iba Junction,
+                  Lasu-Igando expressway
+                  <br />
+                  Osogbo: Kosemani house, Opposite Ibraheem gbadebo filling
+                  station, ogooluwa
+                </p>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <h5>Call Us</h5>
+                <p><a href="tel:+2348104240201">+2348104240201</a></p>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h5>Email Us</h5>
+                <p>
+                  <a href="mailto:Opulencesignature001@gmail.com"
+                    >opulencesignature001@gmail.com</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <h5>Working Hours</h5>
+                <p>Mon - Sat: 9:00 AM - 7:00 PM<br />Sunday: By Appointment</p>
+              </div>
+            </div>
+            <div class="cinfo-socials">
+              <a href="#" class="csocial-link" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" class="csocial-link" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" class="csocial-link" aria-label="WhatsApp"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a href="#" class="csocial-link" aria-label="Tiktok"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap reveal-right">
+            <form id="contactForm">
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Phone Number"
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <select class="form-select">
+                    <option value="" disabled selected>Enquiry About</option>
+                    <option>Opulence Luxury (Hair Sales)</option>
+                    <option>Opulence Saloon (Services)</option>
+                    <option>Opulence Tools (Equipment)</option>
+                    <option>General Enquiry</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    placeholder="Your message..."
+                    style="min-height: 120px; resize: none"
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-contact-submit">
+                    <span>Send Message</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#" class="footer-logo">
+              <img src="images/signature.png" alt="Opulence Signature" />
+            </a>
+            <p>
+              Where luxury meets artistry. Three brands, one signature elegance.
+            </p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="Tiktok"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h6>Opulence Luxury</h6>
+            <ul>
+              <li><a href="luxury/index.html">Hair Extensions</a></li>
+              <li><a href="luxury/index.html">Custom Wigs</a></li>
+              <li><a href="luxury/index.html">Bundles & Closures</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h6>Opulence Saloon</h6>
+            <ul>
+              <li><a href="saloon/index.html">Book Appointment</a></li>
+              <li><a href="saloon/index.html">Bridal Styling</a></li>
+              <li><a href="saloon/index.html">Consultations</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h6>Opulence Tools</h6>
+            <ul>
+              <li><a href="tools/index.html">Styling Tools</a></li>
+              <li><a href="tools/index.html">Salon Equipment</a></li>
+              <li><a href="tools/index.html">Accessories</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h6>Contact</h6>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>Lagos address: Shop 18,
+                Jafo plaza, oniba drive, Iba Junction, Lasu-Igando expressway
+                <br />
+                Osogbo: Kosemani house, Opposite Ibraheem gbadebo filling
+                station, ogooluwa
+              </li>
+              <li><i class="fa-solid fa-phone"></i> +234 123 456 7890</li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                Opulencesignature001@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Opulence Signature. All rights reserved.</p>
+          <p>
+            Designed & crafted by
+            <a href="https://wa.me/+2348180980419">HISRAEL_TECH</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Page loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("page-loader").classList.add("loaded");
+          document.body.style.overflow = "";
+        }, 1800);
+      });
+      document.body.style.overflow = "hidden";
+
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      const cursorRing = document.getElementById("cursorRing");
+      let mX = 0,
+        mY = 0,
+        rX = 0,
+        rY = 0;
+      document.addEventListener("mousemove", (e) => {
+        mX = e.clientX;
+        mY = e.clientY;
+        cursor.style.left = mX + "px";
+        cursor.style.top = mY + "px";
+      });
+      (function animRing() {
+        rX += (mX - rX) * 0.12;
+        rY += (mY - rY) * 0.12;
+        cursorRing.style.left = rX + "px";
+        cursorRing.style.top = rY + "px";
+        requestAnimationFrame(animRing);
+      })();
+      document
+        .querySelectorAll("a, button, .division-card, .pillar")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursor.classList.add("hovered");
+            cursorRing.classList.add("hovered");
+          });
+          el.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hovered");
+            cursorRing.classList.remove("hovered");
+          });
+        });
+
+      // Navbar scroll
+      const nav = document.getElementById("mainNav");
+      window.addEventListener("scroll", () =>
+        nav.classList.toggle("scrolled", window.scrollY > 50),
+      );
+
+      // Date in topbar
+      const today = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Africa/Lagos" }),
+      );
+      const dayName = today.toLocaleString("en-US", { weekday: "long" });
+      const monthName = today.toLocaleString("en-US", { month: "long" });
+      const d = today.getDate(),
+        y = today.getFullYear();
+      const ord = (n) => {
+        if (n > 3 && n < 21) return "th";
+        switch (n % 10) {
+          case 1:
+            return "st";
+          case 2:
+            return "nd";
+          case 3:
+            return "rd";
+          default:
+            return "th";
+        }
+      };
+      document.getElementById("info").textContent =
+        `${dayName}, ${monthName} ${d}${ord(d)}, ${y}`;
+
+      // Scroll reveal
+      const ro = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+        .forEach((el) => ro.observe(el));
+
+      // Counter animation
+      function animCount(el) {
+        const target = +el.dataset.count;
+        let cur = 0;
+        const step = target / 60;
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= target) {
+            cur = target;
+            clearInterval(t);
+          }
+          el.textContent = Math.floor(cur);
+        }, 25);
+      }
+      const co = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              animCount(e.target);
+              co.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      document.querySelectorAll(".hstat-num").forEach((el) => co.observe(el));
+
+      // Parallax
+      const pBg = document.getElementById("parallaxBg");
+      if (pBg) {
+        window.addEventListener(
+          "scroll",
+          () => {
+            const banner = pBg.closest(".parallax-banner");
+            if (!banner) return;
+            const offset = banner.getBoundingClientRect().top * 0.3;
+            pBg.style.transform = `translateY(${offset}px)`;
+          },
+          { passive: true },
+        );
+      }
+
+      // Hero reveal on load
+      document.querySelectorAll(".reveal-hero").forEach((el, i) => {
+        el.style.animationDelay = 0.3 + i * 0.15 + "s";
+        el.classList.add("animating");
+      });
+
+      // Brands dropdown
+      document.querySelectorAll(".nav-dropdown-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parent = this.closest(".nav-dropdown");
+          const isOpen = parent.classList.contains("open");
+          document
+            .querySelectorAll(".nav-dropdown.open")
+            .forEach((el) => el.classList.remove("open"));
+          if (!isOpen) parent.classList.add("open");
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-dropdown")) {
+          document
+            .querySelectorAll(".nav-dropdown.open")
+            .forEach((el) => el.classList.remove("open"));
+        }
+      });
+
+      // Contact form
+      document
+        .getElementById("contactForm")
+        ?.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const btn = this.querySelector(".btn-contact-submit");
+          btn.innerHTML =
+            '<span><i class="fa-solid fa-check"></i> Message Sent!</span>';
+          btn.classList.add("sent");
+          setTimeout(() => {
+            btn.innerHTML = "<span>Send Message</span>";
+            btn.classList.remove("sent");
+            this.reset();
+          }, 3000);
+        });
+    </script>
+  </body>
+</html>
