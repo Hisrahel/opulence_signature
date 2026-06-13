@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Opulence Saloon - Expert Styling & Booking</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="../images/signature.png" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <div id="page-loader">
+      <div class="loader-wordmark"><span class="loader-o">O</span>PULENCE</div>
+      <div class="loader-sub">SALOON</div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="topbar-left">
+            <a href="../index.html" class="topbar-back"
+              ><i class="fa-solid fa-arrow-left"></i> Back to Home</a
+            >
+          </div>
+          <div class="topbar-center">
+            <i class="fa-solid fa-phone"></i>
+            <span
+              >Call us:
+              <a href="tel:+2348104240201">+234 810 424 0201</a> &nbsp;·&nbsp;
+              Mon-Sat 9AM-7PM</span
+            >
+          </div>
+          <div class="topbar-right">
+            <a href="#" aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="TikTok"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../images/signature.png" alt="Opulence Signature" />
+          <div class="brand-stack">
+            <span class="brand-main">OPULENCE</span>
+            <span class="brand-sub">SALOON</span>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#salonNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="toggler-bar"></span><span class="toggler-bar"></span
+          ><span class="toggler-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="salonNavbar">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#booking">Book Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bridal">Bridal</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#faq">Guide</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a class="nav-cta" href="#booking">Book Appointment</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="salon-hero">
+      <div
+        class="salon-hero-bg"
+        style="background-image: url(&quot;../images/bride.webp&quot;)"
+      ></div>
+      <div class="salon-hero-overlay"></div>
+      <div class="container salon-hero-body">
+        <div class="salon-hero-eyebrow reveal-hero">
+          <span class="eyebrow-pill">Expert Salon Services</span>
+          <span>Lagos · Osogbo</span>
+        </div>
+        <h1 class="salon-hero-title reveal-hero delay-1">
+          Where Every Look<br />Becomes a <em>Signature.</em>
+        </h1>
+        <p class="salon-hero-desc reveal-hero delay-2">
+          From flawless wig installations to elegant bridal styling - our expert
+          team delivers precision, artistry, and care in every session.
+        </p>
+        <div class="salon-hero-actions reveal-hero delay-3">
+          <a href="#booking" class="btn-salon-primary"
+            ><span>Book Your Appointment</span></a
+          >
+          <a href="#services" class="btn-salon-ghost">Explore Services</a>
+        </div>
+        <div class="salon-hero-trust reveal-hero delay-4">
+          <div class="trust-item">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i>
+            <span>5-star experience</span>
+          </div>
+          <div class="trust-sep">·</div>
+          <div class="trust-item">
+            <i class="fa-solid fa-user-check"></i
+            ><span>500+ clients served</span>
+          </div>
+          <div class="trust-sep">·</div>
+          <div class="trust-item">
+            <i class="fa-solid fa-certificate"></i
+            ><span>Professional stylists</span>
+          </div>
+        </div>
+      </div>
+      <div class="salon-hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>Wig Installation</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Bridal Styling</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Treatments</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Maintenance & Revamp</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Consultations</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Extensions</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Wig Installation</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Bridal Styling</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Treatments</span><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Maintenance & Revamp</span
+        ><i class="fa-solid fa-diamond gold-dot"></i> <span>Consultations</span
+        ><i class="fa-solid fa-diamond gold-dot"></i>
+        <span>Hair Extensions</span><i class="fa-solid fa-diamond gold-dot"></i>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-head text-center reveal">
+          <div class="section-eyebrow" style="justify-content: center">
+            <div class="eyebrow-line"></div>
+            <span>What We Offer</span>
+          </div>
+          <h2 class="section-title">Our <em>Services</em></h2>
+          <p class="section-body" style="max-width: 520px; margin: 12px auto 0">
+            Every service is delivered with precision, care, and the artistry
+            that defines Opulence Saloon.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal delay-1">
+            <div class="service-card-img">
+              <img src="../images/wig.webp" alt="Wig Installation" />
+              <div class="service-card-num">01</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
+              <h4>Wig Installation & Styling</h4>
+              <p>
+                Precision wig installation for a secure, flawless, and
+                natural-looking finish. Includes customisation, plucking, and
+                styling to your preference.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span>
+                <a href="#booking" class="service-book-link"
+                  >Book Now <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card reveal delay-2">
+            <div class="service-card-img">
+              <img src="../images/treatment.png" alt="Hair Treatment" />
+              <div class="service-card-num">02</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon"><i class="fa-solid fa-heart"></i></div>
+              <h4>Hair Treatments & Restoration</h4>
+              <p>
+                Deep conditioning, scalp treatments, and restorative care
+                designed to strengthen, nourish, and revitalise your natural
+                hair.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 1-2 hrs</span>
+                <a href="#booking" class="service-book-link"
+                  >Book Now <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card reveal delay-3">
+            <div class="service-card-img">
+              <img src="../images/bride.webp" alt="Bridal Styling" />
+              <div class="service-card-num">03</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+              <h4>Bridal & Special Occasion</h4>
+              <p>
+                Elegant, camera-ready hairstyles crafted for your wedding,
+                ceremony, or special event. Includes trial session and day-of
+                styling.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 3-5 hrs</span>
+                <a href="#bridal" class="service-book-link"
+                  >Learn More <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card reveal delay-1">
+            <div class="service-card-img">
+              <img src="../images/revamp.webp" alt="Maintenance" />
+              <div class="service-card-num">04</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon"><i class="fa-solid fa-rotate"></i></div>
+              <h4>Hair Maintenance & Revamp</h4>
+              <p>
+                Refresh and restore your existing hair units - cleansing,
+                conditioning, restyling, and minor repairs to extend the life of
+                your investment.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 1-3 hrs</span>
+                <a href="#booking" class="service-book-link"
+                  >Book Now <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card reveal delay-2">
+            <div class="service-card-img">
+              <img src="../images/extension.webp" alt="Extensions" />
+              <div class="service-card-num">05</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <h4>Hair Extension Installation</h4>
+              <p>
+                Seamless extension installs - sew-in, tape-in, or clip-in.
+                Natural blending and precision placement for a flawless result.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span>
+                <a href="#booking" class="service-book-link"
+                  >Book Now <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card reveal delay-3">
+            <div class="service-card-img">
+              <img src="../images/consult.webp" alt="Consultation" />
+              <div class="service-card-num">06</div>
+            </div>
+            <div class="service-card-body">
+              <div class="service-icon">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <h4>Consultations & Advisory</h4>
+              <p>
+                A personalised one-on-one consultation to help you choose the
+                right hair, style, and treatment for your unique needs and
+                lifestyle.
+              </p>
+              <div class="service-meta">
+                <span><i class="fa-regular fa-clock"></i> 30-60 min</span>
+                <a href="#booking" class="service-book-link"
+                  >Book Now <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="booking-layout">
+          <!-- Info panel -->
+          <div class="booking-info reveal-left">
+            <div class="section-eyebrow">
+              <div class="eyebrow-line"></div>
+              <span>Reserve Your Seat</span>
+            </div>
+            <h2 class="section-title">Book Your<br /><em>Appointment</em></h2>
+            <p class="section-body" style="margin-top: 14px">
+              Select your service, preferred date and time, then fill in your
+              details. We'll confirm your booking within 24 hours.
+            </p>
+            <div class="booking-info-items">
+              <div class="binfo-item">
+                <div class="binfo-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h5>Lagos Studio</h5>
+                  <p>
+                    Shop 18, Jafo Plaza, Oniba Drive, Iba Junction, Lasu-Igando
+                    Expressway
+                  </p>
+                </div>
+              </div>
+              <div class="binfo-item">
+                <div class="binfo-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h5>Osogbo Studio</h5>
+                  <p>
+                    Kosemani House, Opposite Ibraheem Gbadebo Filling Station,
+                    Ogooluwa
+                  </p>
+                </div>
+              </div>
+              <div class="binfo-item">
+                <div class="binfo-icon"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                  <h5>Working Hours</h5>
+                  <p>
+                    Mon - Sat: 9:00 AM - 7:00 PM<br />Sunday: By Appointment
+                    Only
+                  </p>
+                </div>
+              </div>
+              <div class="binfo-item">
+                <div class="binfo-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <h5>Quick Call</h5>
+                  <p><a href="tel:+2348104240201">+234 810 424 0201</a></p>
+                </div>
+              </div>
+            </div>
+            <a
+              href="https://wa.me/2348104240201?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Opulence%20Saloon."
+              target="_blank"
+              class="btn-wa-booking"
+            >
+              <i class="fa-brands fa-whatsapp"></i
+              ><span>Book Instantly via WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Multi-step form -->
+          <div class="booking-form-wrap reveal-right">
+            <div class="booking-steps">
+              <div class="bstep active" id="bstep1">
+                <div class="bstep-num">1</div>
+                <span>Service</span>
+              </div>
+              <div class="bstep-line" id="bline1"></div>
+              <div class="bstep" id="bstep2">
+                <div class="bstep-num">2</div>
+                <span>Date & Time</span>
+              </div>
+              <div class="bstep-line" id="bline2"></div>
+              <div class="bstep" id="bstep3">
+                <div class="bstep-num">3</div>
+                <span>Your Info</span>
+              </div>
+            </div>
+
+            <form id="bookingForm" class="booking-form" novalidate>
+              <!-- Step 1 -->
+              <div class="bform-step" id="bform1">
+                <h3>
+                  <i class="fa-solid fa-scissors"></i> Choose Your Service
+                </h3>
+                <div class="service-pick-grid">
+                  <div
+                    class="spick-card"
+                    data-service="Wig Installation & Styling"
+                  >
+                    <i class="fa-solid fa-crown"></i
+                    ><span>Wig Installation</span>
+                  </div>
+                  <div
+                    class="spick-card"
+                    data-service="Hair Treatments & Restoration"
+                  >
+                    <i class="fa-solid fa-heart"></i><span>Hair Treatment</span>
+                  </div>
+                  <div
+                    class="spick-card"
+                    data-service="Bridal & Special Occasion"
+                  >
+                    <i class="fa-solid fa-gem"></i><span>Bridal Styling</span>
+                  </div>
+                  <div
+                    class="spick-card"
+                    data-service="Hair Maintenance & Revamp"
+                  >
+                    <i class="fa-solid fa-rotate"></i><span>Maintenance</span>
+                  </div>
+                  <div
+                    class="spick-card"
+                    data-service="Hair Extension Installation"
+                  >
+                    <i class="fa-solid fa-wand-magic-sparkles"></i
+                    ><span>Extensions</span>
+                  </div>
+                  <div class="spick-card" data-service="Consultation">
+                    <i class="fa-solid fa-comments"></i
+                    ><span>Consultation</span>
+                  </div>
+                </div>
+                <div class="bform-location">
+                  <label>Preferred Location</label>
+                  <div class="location-picks">
+                    <div class="loc-pick active" data-loc="Lagos">
+                      Lagos Studio
+                    </div>
+                    <div class="loc-pick" data-loc="Osogbo">Osogbo Studio</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-bform-next" onclick="bNext(2)">
+                  Continue <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="bform-step" id="bform2" style="display: none">
+                <h3>
+                  <i class="fa-solid fa-calendar-days"></i> Pick a Date & Time
+                </h3>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="bform-label">Preferred Date</label>
+                    <input
+                      type="date"
+                      class="bform-input"
+                      id="apptDate"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="bform-label">Estimated Duration</label>
+                    <select class="bform-select" id="apptDuration">
+                      <option value="1hr">~1 Hour</option>
+                      <option value="2hrs">~2 Hours</option>
+                      <option value="3hrs">~3 Hours</option>
+                      <option value="4hrs+">4+ Hours</option>
+                    </select>
+                  </div>
+                </div>
+                <label class="bform-label">Select Time Slot</label>
+                <div class="time-slots">
+                  <div class="tslot" data-time="9:00 AM">9:00 AM</div>
+                  <div class="tslot" data-time="10:00 AM">10:00 AM</div>
+                  <div class="tslot" data-time="11:00 AM">11:00 AM</div>
+                  <div class="tslot" data-time="12:00 PM">12:00 PM</div>
+                  <div class="tslot" data-time="1:00 PM">1:00 PM</div>
+                  <div class="tslot" data-time="2:00 PM">2:00 PM</div>
+                  <div class="tslot" data-time="3:00 PM">3:00 PM</div>
+                  <div class="tslot" data-time="4:00 PM">4:00 PM</div>
+                  <div class="tslot" data-time="5:00 PM">5:00 PM</div>
+                  <div class="tslot" data-time="6:00 PM">6:00 PM</div>
+                </div>
+                <div class="bform-nav">
+                  <button
+                    type="button"
+                    class="btn-bform-back"
+                    onclick="bPrev(1)"
+                  >
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn-bform-next"
+                    onclick="bNext(3)"
+                  >
+                    Continue <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="bform-step" id="bform3" style="display: none">
+                <h3><i class="fa-solid fa-user"></i> Your Information</h3>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="bform-label">Full Name *</label>
+                    <input
+                      type="text"
+                      class="bform-input"
+                      id="clientName"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="bform-label">Email Address *</label>
+                    <input
+                      type="email"
+                      class="bform-input"
+                      id="clientEmail"
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="bform-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      class="bform-input"
+                      id="clientPhone"
+                      placeholder="+234 xxx xxx xxxx"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="bform-label">Preferred Contact</label>
+                    <select class="bform-select" id="clientContact">
+                      <option>WhatsApp</option>
+                      <option>Phone Call</option>
+                      <option>Email</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="bform-label"
+                      >Special Requests
+                      <span class="optional">(Optional)</span></label
+                    >
+                    <textarea
+                      class="bform-input bform-textarea"
+                      id="clientNotes"
+                      placeholder="Any specific preferences, hair details, or requirements..."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="booking-summary">
+                  <h5>
+                    <i class="fa-solid fa-list-check"></i> Booking Summary
+                  </h5>
+                  <div class="bsum-row">
+                    <span>Service</span><span id="sumService">-</span>
+                  </div>
+                  <div class="bsum-row">
+                    <span>Location</span
+                    ><span id="sumLocation">Lagos Studio</span>
+                  </div>
+                  <div class="bsum-row">
+                    <span>Date</span><span id="sumDate">-</span>
+                  </div>
+                  <div class="bsum-row">
+                    <span>Time</span><span id="sumTime">-</span>
+                  </div>
+                </div>
+                <div class="bform-nav">
+                  <button
+                    type="button"
+                    class="btn-bform-back"
+                    onclick="bPrev(2)"
+                  >
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                  </button>
+                  <button type="submit" class="btn-bform-submit">
+                    Confirm Booking <i class="fa-solid fa-check"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Success -->
+              <div
+                class="bform-success"
+                id="bformSuccess"
+                style="display: none"
+              >
+                <div class="success-ring">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <h3>Appointment Requested!</h3>
+                <p>
+                  Thank you! We've received your booking request. Our team will
+                  confirm your appointment within 24 hours via your preferred
+                  contact method.
+                </p>
+                <p class="success-sub">
+                  A copy will also be sent to your email.
+                </p>
+                <button
+                  type="button"
+                  class="btn-bform-next"
+                  onclick="resetBookingForm()"
+                  style="max-width: 260px; margin: 20px auto 0"
+                >
+                  Book Another <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRIDAL -->
+    <section class="bridal-section" id="bridal">
+      <div class="container">
+        <div class="bridal-grid">
+          <div class="bridal-visual reveal-left">
+            <img
+              src="../images/bride.webp"
+              alt="Bridal Styling"
+              class="bridal-main-img"
+            />
+            <div class="bridal-float">
+              <i class="fa-solid fa-gem"></i><span>Bridal<br />Specialist</span>
+            </div>
+          </div>
+          <div class="bridal-content reveal-right">
+            <div class="section-eyebrow">
+              <div class="eyebrow-line"></div>
+              <span>Bridal Services</span>
+            </div>
+            <h2 class="section-title">
+              Your Most Beautiful<br /><em>Day Deserves</em><br />Perfection.
+            </h2>
+            <p class="section-body" style="margin-top: 16px">
+              Your wedding day is one of the most photographed moments of your
+              life. At Opulence Saloon, our bridal specialists craft elegant,
+              long-lasting hairstyles that complement your look, outfit, and
+              theme - from the rehearsal to the reception.
+            </p>
+            <div class="bridal-features">
+              <div class="bridal-feat">
+                <i class="fa-solid fa-check-circle"></i> Pre-bridal consultation
+                & trial session
+              </div>
+              <div class="bridal-feat">
+                <i class="fa-solid fa-check-circle"></i> Day-of styling &
+                touch-up support
+              </div>
+              <div class="bridal-feat">
+                <i class="fa-solid fa-check-circle"></i> Bridesmaid & party
+                styling packages
+              </div>
+              <div class="bridal-feat">
+                <i class="fa-solid fa-check-circle"></i> Travel-to-venue service
+                available
+              </div>
+              <div class="bridal-feat">
+                <i class="fa-solid fa-check-circle"></i> Works with any hair
+                type or texture
+              </div>
+            </div>
+            <div class="bridal-actions">
+              <a href="#booking" class="btn-salon-primary"
+                ><span>Book Bridal Session</span></a
+              >
+              <a
+                href="https://wa.me/2348104240201?text=Hello%2C%20I%27m%20interested%20in%20bridal%20styling."
+                target="_blank"
+                class="btn-wa-sm"
+              >
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="faq-layout">
+          <div class="faq-sticky reveal-left">
+            <div class="section-eyebrow">
+              <div class="eyebrow-line"></div>
+              <span>Service Guide</span>
+            </div>
+            <h2 class="section-title">
+              Everything<br />You Need<br /><em>to Know</em>
+            </h2>
+            <p class="section-body" style="margin-top: 14px">
+              Answers to our most asked questions about bookings, services, and
+              hair care.
+            </p>
+            <div class="faq-big-num">08</div>
+          </div>
+          <div class="faq-accordions reveal-right">
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1"
+                  >
+                    What types of hair do you use?
+                  </button>
+                </div>
+                <div
+                  id="faq1"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    We use premium, ethically sourced Grade 10A human hair -
+                    selected for softness, durability, and a natural finish that
+                    blends seamlessly with your own hair.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2"
+                  >
+                    How long does a wig installation last?
+                  </button>
+                </div>
+                <div
+                  id="faq2"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Wig installations typically last 2-4 weeks depending on your
+                    lifestyle, maintenance routine, and installation method. We
+                    provide detailed aftercare guidance to help extend
+                    longevity.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3"
+                  >
+                    Do you offer custom wig services?
+                  </button>
+                </div>
+                <div
+                  id="faq3"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Yes. We create custom wigs tailored to your head size,
+                    preferred texture, colour, and density - ensuring a perfect
+                    fit and a truly personalised look.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq4"
+                  >
+                    Are treatments suitable for natural and relaxed hair?
+                  </button>
+                </div>
+                <div
+                  id="faq4"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Absolutely. Our treatments are designed for natural,
+                    relaxed, and transitioning hair - focusing on scalp health,
+                    moisture balance, and full hair restoration.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq5"
+                  >
+                    How do I maintain my hair after a service?
+                  </button>
+                </div>
+                <div
+                  id="faq5"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    We recommend gentle cleansing, minimal heat, proper storage,
+                    and regular maintenance appointments. Our Hair Maintenance &
+                    Revamp service is ideal for keeping your units in top
+                    condition.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq6"
+                  >
+                    How far in advance should I book?
+                  </button>
+                </div>
+                <div
+                  id="faq6"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    We advise booking at least 1-2 weeks in advance. Bridal and
+                    special occasion services should be booked 4-6 weeks ahead
+                    to secure your preferred date.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq7"
+                  >
+                    Is a consultation required before booking?
+                  </button>
+                </div>
+                <div
+                  id="faq7"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Consultations are highly recommended, especially for custom
+                    wigs, treatments, and bridal services. They allow us to
+                    fully understand your needs and deliver the best results.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq8"
+                  >
+                    Do you travel to clients for bridal styling?
+                  </button>
+                </div>
+                <div
+                  id="faq8"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Yes! We offer travel-to-venue bridal styling services.
+                    Travel fees may apply depending on location. Contact us via
+                    WhatsApp to discuss your requirements and get a quote.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT STRIP -->
+    <section class="contact-strip" id="contact">
+      <div class="container">
+        <div class="cstrip-grid reveal">
+          <div class="cstrip-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h5>Lagos Studio</h5>
+              <p>
+                Shop 18, Jafo Plaza, Oniba Drive, Iba Junction, Lasu-Igando
+                Expressway
+              </p>
+            </div>
+          </div>
+          <div class="cstrip-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h5>Osogbo Studio</h5>
+              <p>
+                Kosemani House, Opp. Ibraheem Gbadebo Filling Station, Ogooluwa
+              </p>
+            </div>
+          </div>
+          <div class="cstrip-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <h5>Call / WhatsApp</h5>
+              <p><a href="tel:+2348104240201">+234 810 424 0201</a></p>
+            </div>
+          </div>
+          <div class="cstrip-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <h5>Email</h5>
+              <p>
+                <a href="mailto:opulencesignature001@gmail.com"
+                  >opulencesignature001@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="../index.html" class="footer-logo"
+              ><img src="../images/signature.png" alt="Opulence Signature"
+            /></a>
+            <p>
+              Expert salon services - where precision meets artistry in every
+              appointment.
+            </p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="TikTok"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h6>Services</h6>
+            <ul>
+              <li><a href="#services">Wig Installation</a></li>
+              <li><a href="#services">Hair Treatments</a></li>
+              <li><a href="#bridal">Bridal Styling</a></li>
+              <li><a href="#services">Maintenance</a></li>
+              <li><a href="#services">Consultations</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h6>Our Brands</h6>
+            <ul>
+              <li><a href="../index.html">Opulence Signature</a></li>
+              <li><a href="../luxury/index.html">Opulence Luxury</a></li>
+              <li><a href="../tools/index.html">Opulence Tools</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h6>Contact</h6>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fa-solid fa-location-dot"></i> Shop 18, Jafo Plaza,
+                Iba Junction, Lagos
+              </li>
+              <li><i class="fa-solid fa-phone"></i> +234 810 424 0201</li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                opulencesignature001@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Opulence Saloon. All rights reserved.</p>
+          <p>
+            Designed & crafted by
+            <a href="https://wa.me/+2348180980419">HISRAEL_TECH</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let selectedService = "",
+        selectedLocation = "Lagos",
+        selectedTime = "";
+
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("page-loader").classList.add("loaded");
+          document.body.style.overflow = "";
+        }, 1500);
+      });
+      document.body.style.overflow = "hidden";
+
+      const cursor = document.getElementById("cursor"),
+        cursorRing = document.getElementById("cursorRing");
+      let mX = 0,
+        mY = 0,
+        rX = 0,
+        rY = 0;
+      document.addEventListener("mousemove", (e) => {
+        mX = e.clientX;
+        mY = e.clientY;
+        cursor.style.left = mX + "px";
+        cursor.style.top = mY + "px";
+      });
+      (function animRing() {
+        rX += (mX - rX) * 0.12;
+        rY += (mY - rY) * 0.12;
+        cursorRing.style.left = rX + "px";
+        cursorRing.style.top = rY + "px";
+        requestAnimationFrame(animRing);
+      })();
+      document
+        .querySelectorAll("a,button,.spick-card,.tslot,.service-card")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursor.classList.add("hovered");
+            cursorRing.classList.add("hovered");
+          });
+          el.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hovered");
+            cursorRing.classList.remove("hovered");
+          });
+        });
+
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("mainNav")
+          .classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      const ro = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal,.reveal-left,.reveal-right")
+        .forEach((el) => ro.observe(el));
+
+      document.querySelectorAll(".reveal-hero").forEach((el, i) => {
+        el.style.animationDelay = 0.2 + i * 0.15 + "s";
+        el.classList.add("animating");
+      });
+
+      document.getElementById("apptDate").min = new Date()
+        .toISOString()
+        .split("T")[0];
+
+      document.querySelectorAll(".spick-card").forEach((c) => {
+        c.addEventListener("click", function () {
+          document
+            .querySelectorAll(".spick-card")
+            .forEach((x) => x.classList.remove("selected"));
+          this.classList.add("selected");
+          selectedService = this.dataset.service;
+          document.getElementById("sumService").textContent = selectedService;
+        });
+      });
+
+      document.querySelectorAll(".loc-pick").forEach((l) => {
+        l.addEventListener("click", function () {
+          document
+            .querySelectorAll(".loc-pick")
+            .forEach((x) => x.classList.remove("active"));
+          this.classList.add("active");
+          selectedLocation = this.dataset.loc;
+          document.getElementById("sumLocation").textContent =
+            selectedLocation + " Studio";
+        });
+      });
+
+      document.querySelectorAll(".tslot").forEach((s) => {
+        s.addEventListener("click", function () {
+          document
+            .querySelectorAll(".tslot")
+            .forEach((x) => x.classList.remove("selected"));
+          this.classList.add("selected");
+          selectedTime = this.dataset.time;
+          document.getElementById("sumTime").textContent = selectedTime;
+        });
+      });
+
+      document
+        .getElementById("apptDate")
+        .addEventListener("change", function () {
+          const d = new Date(this.value + "T00:00:00");
+          document.getElementById("sumDate").textContent = d.toLocaleDateString(
+            "en-US",
+            { weekday: "long", year: "numeric", month: "long", day: "numeric" },
+          );
+        });
+
+      function bNext(step) {
+        if (step === 2 && !selectedService) {
+          shakeForm();
+          return;
+        }
+        if (step === 3) {
+          const date = document.getElementById("apptDate").value;
+          if (!date || !selectedTime) {
+            shakeForm();
+            return;
+          }
+        }
+        showStep(step);
+      }
+      function bPrev(step) {
+        showStep(step);
+      }
+      function showStep(step) {
+        document
+          .querySelectorAll(".bform-step")
+          .forEach((s) => (s.style.display = "none"));
+        const el = document.getElementById("bform" + step);
+        if (el) {
+          el.style.display = "block";
+          el.style.animation = "stepFadeUp .4s ease both";
+        }
+        updateStepIndicators(step);
+      }
+      function updateStepIndicators(step) {
+        for (let i = 1; i <= 3; i++) {
+          const ind = document.getElementById("bstep" + i);
+          ind.classList.remove("active", "done");
+          if (i < step) ind.classList.add("done");
+          else if (i === step) ind.classList.add("active");
+        }
+        document.getElementById("bline1").style.background =
+          step > 1 ? "var(--gold)" : "var(--light-gray)";
+        document.getElementById("bline2").style.background =
+          step > 2 ? "var(--gold)" : "var(--light-gray)";
+      }
+      function shakeForm() {
+        const f = document.querySelector(".booking-form-wrap");
+        f.style.animation = "shake .4s ease";
+        setTimeout(() => (f.style.animation = ""), 400);
+      }
+
+      document
+        .getElementById("bookingForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("clientName").value.trim(),
+            email = document.getElementById("clientEmail").value.trim(),
+            phone = document.getElementById("clientPhone").value.trim();
+          if (!name || !email || !phone) {
+            shakeForm();
+            return;
+          }
+          document
+            .querySelectorAll(".bform-step")
+            .forEach((s) => (s.style.display = "none"));
+          const success = document.getElementById("bformSuccess");
+          success.style.display = "flex";
+          success.style.animation = "stepFadeUp .6s ease both";
+          document.getElementById("bstep3").classList.add("done");
+        });
+
+      function resetBookingForm() {
+        selectedService = "";
+        selectedTime = "";
+        selectedLocation = "Lagos";
+        document.getElementById("bformSuccess").style.display = "none";
+        document
+          .querySelectorAll(".spick-card")
+          .forEach((c) => c.classList.remove("selected"));
+        document
+          .querySelectorAll(".tslot")
+          .forEach((s) => s.classList.remove("selected"));
+        document.getElementById("bookingForm").reset();
+        document.getElementById("apptDate").value = "";
+        ["sumService", "sumDate", "sumTime"].forEach(
+          (id) => (document.getElementById(id).textContent = "-"),
+        );
+        document.getElementById("sumLocation").textContent = "Lagos Studio";
+        showStep(1);
+      }
+    </script>
+    <style>
+      @keyframes stepFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-8px);
+        }
+        40% {
+          transform: translateX(8px);
+        }
+        60% {
+          transform: translateX(-5px);
+        }
+        80% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </body>
+</html>

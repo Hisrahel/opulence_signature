@@ -58,7 +58,7 @@
       <div class="container">
         <a class="navbar-brand" href="#">
           <img src="images/signature.png" alt="Opulence Signature" />
-          <span class="brand-text">OPULENCE <em>Signature</em></span>
+          <span class="brand-text">OPULENCE <br /><em>Signature</em></span>
         </a>
 
         <button
@@ -125,38 +125,56 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
-          <a class="nav-cta" href="saloon/index.html">Book Appointment</a>
+          <div class="bookapp">
+            <a class="nav-cta" href="saloon/index.html">Book Appointment</a>
+          </div>
         </div>
       </div>
     </nav>
 
     <!-- ==================== HERO ==================== -->
     <section class="hero">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="images/hero.webp"
-        >
-          <source src="images/hero-video.mp4" type="video/mp4" />
-          <!-- Fallback if video not found -->
-        </video>
-        <!-- Fallback image shown when video hasn't loaded or isn't present -->
+      <div class="hero-carousel" id="heroCarousel">
         <div
-          class="hero-bg-img"
+          class="hero-slide active"
           style="background-image: url(&quot;images/hero.webp&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;images/first.webp&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;images/sec.webp&quot;)"
         ></div>
         <div class="hero-overlay"></div>
       </div>
 
+      <div class="hero-carousel-dots" id="heroDots">
+        <button
+          class="hero-carousel-dot active"
+          data-slide="0"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          class="hero-carousel-dot"
+          data-slide="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          class="hero-carousel-dot"
+          data-slide="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+
       <div class="container hero-body">
         <div class="hero-eyebrow reveal-hero">
-          <span class="eyebrow-pill">Premium Hairs Studio · Nigeria</span>
+          <span class="eyebrow-pill">Premium Hair Studio · Nigeria</span>
           <span class="eyebrow-divider">-</span>
-          <span>Luxury Hairs, Professional Stylings & Beauty tools.</span>
+          <span class="cool"
+            >Luxury Hairs, Professional Stylings & Beauty tools.</span
+          >
         </div>
 
         <h1 class="hero-title reveal-hero delay-1">
@@ -197,11 +215,6 @@
             <span class="hstat-label">Brand Divisions</span>
           </div>
         </div>
-      </div>
-
-      <div class="hero-scroll-cue">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
       </div>
     </section>
 
@@ -831,6 +844,33 @@
         el.style.animationDelay = 0.3 + i * 0.15 + "s";
         el.classList.add("animating");
       });
+
+      // Hero carousel
+      (function () {
+        const slides = document.querySelectorAll(".hero-slide");
+        const dots = document.querySelectorAll(".hero-carousel-dot");
+        let current = 0;
+        const total = slides.length;
+        if (total <= 1) return;
+
+        function goTo(index) {
+          slides[current].classList.remove("active");
+          dots[current].classList.remove("active");
+          current = (index + total) % total;
+          slides[current].classList.add("active");
+          dots[current].classList.add("active");
+        }
+
+        let interval = setInterval(() => goTo(current + 1), 6000);
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            clearInterval(interval);
+            goTo(i);
+            interval = setInterval(() => goTo(current + 1), 6000);
+          });
+        });
+      })();
 
       // Brands dropdown
       document.querySelectorAll(".nav-dropdown-toggle").forEach((toggle) => {

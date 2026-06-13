@@ -2,9 +2,9 @@
 
 /* ===================== TOKENS ===================== */
 :root {
-  --forest: #0b3300;
-  --forest-2: #164a05;
-  --forest-3: #1e6308;
+  --forest: #0d0d0d;
+  --forest-2: #1a1a1a;
+  --forest-3: #242424;
   --gold: #c9a84c;
   --gold-light: #dfc278;
   --gold-pale: #f5e9c8;
@@ -260,7 +260,7 @@ img {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(201, 168, 76, 0.12);
   padding: 0 !important;
-  height: 70px;
+  height: 80px;
   transition:
     box-shadow 0.4s,
     height 0.4s;
@@ -717,16 +717,16 @@ img {
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(11, 51, 0, 0.85) 40%,
-    rgba(11, 51, 0, 0.4) 100%
+    rgba(13, 13, 13, 0.55) 30%,
+    rgba(13, 13, 13, 0.2) 100%
   );
+  z-index: 2;
 }
 .lux-hero-body {
   position: relative;
   z-index: 2;
   padding-top: 70px;
   padding-bottom: 80px;
-  max-width: 700px;
 }
 .reveal-hero {
   opacity: 0;
@@ -1609,6 +1609,9 @@ img {
   }
 }
 @media (max-width: 991px) {
+  .oioi{
+    display: none;
+  }
   .footer {
     background: var(--forest);
     padding: 20px 0 0 0;
