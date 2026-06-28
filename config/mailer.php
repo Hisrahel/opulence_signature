@@ -23,16 +23,27 @@
 // file is also required directly by pages outside the admin layout —
 // login.php, forgot-password.php, reset-password.php — which run before
 // any admin session exists and never load _layout.php.
+
+// Load .env file if it exists
+$envFile = __DIR__ . '/.env';
+if (is_file($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (str_starts_with(trim($line), '#')) continue;
+        [$key, $val] = array_map('trim', explode('=', $line, 2));
+        $_ENV[$key] = $val;
+    }
+}
+
+define('SMTP_PASSWORD',   $_ENV['SMTP_PASSWORD']   ?? '');
 if (!defined('APP_ROOT')) {
     define('APP_ROOT', dirname(__DIR__));
 }
 
 define('SMTP_HOST',       'smtp.gmail.com');
 define('SMTP_PORT',       587);
-define('SMTP_USERNAME',   'olayemisrael5@gmail.com');   // ← change this
-define('SMTP_PASSWORD',   'abec pznb osqs vhpz'); // ← change this
+define('SMTP_USERNAME',   'opulencesignature001@gmail.com'); 
 define('SMTP_ENCRYPTION', 'tls'); // 'tls' or 'ssl'
-define('SMTP_FROM_EMAIL', 'Opulencesignature001@gmail.com');   // ← change this
+define('SMTP_FROM_EMAIL', 'olayemisrael5@gmail.com');   // ← change this
 define('SMTP_FROM_NAME',  'Opulence Signature Admin');
 
 /**

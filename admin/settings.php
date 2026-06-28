@@ -278,10 +278,10 @@ $mailerReady = is_file(APP_ROOT . '/vendor/autoload.php');
                     <label class="form-label">WhatsApp Number <small style="color:var(--muted)">(digits only, with country code)</small></label>
                     <input type="text" name="whatsapp_number" class="form-control" value="<?= htmlspecialchars($whatsappNumber) ?>" placeholder="2348104240201">
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label class="form-label">Free Delivery Threshold (₦)</label>
                     <input type="number" name="free_delivery_threshold" class="form-control" min="0" step="500" value="<?= htmlspecialchars($deliveryThresh) ?>">
-                </div>
+                </div> -->
                 <div class="mb-3 form-check" style="display:flex;align-items:center;gap:10px">
                     <input type="checkbox" name="maintenance_mode" id="maintMode" class="form-check-input" style="width:18px;height:18px;border-radius:4px" <?= $maintenanceMode === '1' ? 'checked' : '' ?>>
                     <label for="maintMode" class="form-label mb-0">Maintenance Mode</label>

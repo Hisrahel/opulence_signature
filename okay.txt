@@ -1,7 +1,7 @@
 cart and checkout
 Update email and social media in front end
 
-abec pznb osqs vhpz
+eqrp ofpq mbub fagn
 
 2ZmDWaUR9ZfXXEKMEmM6UDkz6ik_rJsPGg31KA5eoah3Pydh
 ngrok config add-authtoken 2ZmDWaUR9ZfXXEKMEmM6UDkz6ik_rJsPGg31KA5eoah3Pydh
