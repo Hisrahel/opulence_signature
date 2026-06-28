@@ -579,6 +579,7 @@
                 <div class="col-sm-6">
                   <input
                     type="text"
+                    id="cfName"
                     class="form-control"
                     placeholder="Your Name"
                     required
@@ -587,6 +588,7 @@
                 <div class="col-sm-6">
                   <input
                     type="email"
+                    id="cfEmail"
                     class="form-control"
                     placeholder="Email Address"
                     required
@@ -595,12 +597,13 @@
                 <div class="col-sm-6">
                   <input
                     type="tel"
+                    id="cfPhone"
                     class="form-control"
                     placeholder="Phone Number"
                   />
                 </div>
                 <div class="col-sm-6">
-                  <select class="form-select">
+                  <select class="form-select" id="cfEnquiry">
                     <option value="" disabled selected>Enquiry About</option>
                     <option>Opulence Luxury (Hair Sales)</option>
                     <option>Opulence Saloon (Services)</option>
@@ -610,9 +613,11 @@
                 </div>
                 <div class="col-12">
                   <textarea
+                    id="cfMessage"
                     class="form-control"
                     placeholder="Your message..."
                     style="min-height: 120px; resize: none"
+                    required
                   ></textarea>
                 </div>
                 <div class="col-12">
@@ -620,6 +625,7 @@
                     <span>Send Message</span>
                   </button>
                 </div>
+                <div class="col-12" id="cfStatus" style="font-size: 13px"></div>
               </div>
             </form>
           </div>
@@ -691,7 +697,7 @@
                 Osogbo: Kosemani house, Opposite Ibraheem gbadebo filling
                 station, ogooluwa
               </li>
-              <li><i class="fa-solid fa-phone"></i> +234 123 456 7890</li>
+              <li><i class="fa-solid fa-phone"></i>+234 810 424 0201</li>
               <li>
                 <i class="fa-solid fa-envelope"></i>
                 Opulencesignature001@gmail.com
@@ -895,17 +901,62 @@
       // Contact form
       document
         .getElementById("contactForm")
-        ?.addEventListener("submit", function (e) {
+        ?.addEventListener("submit", async function (e) {
           e.preventDefault();
           const btn = this.querySelector(".btn-contact-submit");
-          btn.innerHTML =
-            '<span><i class="fa-solid fa-check"></i> Message Sent!</span>';
-          btn.classList.add("sent");
-          setTimeout(() => {
-            btn.innerHTML = "<span>Send Message</span>";
-            btn.classList.remove("sent");
-            this.reset();
-          }, 3000);
+          const statusEl = document.getElementById("cfStatus");
+
+          const name = document.getElementById("cfName").value.trim();
+          const email = document.getElementById("cfEmail").value.trim();
+          const phone = document.getElementById("cfPhone").value.trim();
+          const enquiry = document.getElementById("cfEnquiry").value;
+          const message = document.getElementById("cfMessage").value.trim();
+
+          if (!name || !email || !message) {
+            statusEl.textContent =
+              "Please fill in your name, email, and message.";
+            statusEl.style.color = "#ff8a8a";
+            return;
+          }
+
+          const originalBtnHtml = btn.innerHTML;
+          btn.disabled = true;
+          btn.innerHTML = "<span>Sending...</span>";
+          statusEl.textContent = "";
+
+          try {
+            const res = await fetch("api/contact.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, phone, enquiry, message }),
+            });
+            const data = await res.json();
+
+            if (data.success) {
+              btn.innerHTML =
+                '<span><i class="fa-solid fa-check"></i> Message Sent!</span>';
+              btn.classList.add("sent");
+              statusEl.textContent =
+                data.message ||
+                "Message received. We'll get back to you shortly.";
+              statusEl.style.color = "#6ee88a";
+              this.reset();
+              setTimeout(() => {
+                btn.innerHTML = originalBtnHtml;
+                btn.classList.remove("sent");
+                btn.disabled = false;
+                statusEl.textContent = "";
+              }, 3000);
+            } else {
+              throw new Error(data.message || "Failed to send message.");
+            }
+          } catch (err) {
+            btn.innerHTML = originalBtnHtml;
+            btn.disabled = false;
+            statusEl.textContent =
+              err.message || "Something went wrong. Please try again.";
+            statusEl.style.color = "#ff8a8a";
+          }
         });
     </script>
   </body>

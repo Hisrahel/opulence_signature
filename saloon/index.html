@@ -199,8 +199,8 @@
                 styling to your preference.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span>
-                <a href="#booking" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span
+                ><a href="#booking" class="service-book-link"
                   >Book Now <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -220,8 +220,8 @@
                 hair.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 1-2 hrs</span>
-                <a href="#booking" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 1-2 hrs</span
+                ><a href="#booking" class="service-book-link"
                   >Book Now <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -241,8 +241,8 @@
                 styling.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 3-5 hrs</span>
-                <a href="#bridal" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 3-5 hrs</span
+                ><a href="#bridal" class="service-book-link"
                   >Learn More <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -262,8 +262,8 @@
                 your investment.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 1-3 hrs</span>
-                <a href="#booking" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 1-3 hrs</span
+                ><a href="#booking" class="service-book-link"
                   >Book Now <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -284,8 +284,8 @@
                 Natural blending and precision placement for a flawless result.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span>
-                <a href="#booking" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 2-4 hrs</span
+                ><a href="#booking" class="service-book-link"
                   >Book Now <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -307,8 +307,8 @@
                 lifestyle.
               </p>
               <div class="service-meta">
-                <span><i class="fa-regular fa-clock"></i> 30-60 min</span>
-                <a href="#booking" class="service-book-link"
+                <span><i class="fa-regular fa-clock"></i> 30-60 min</span
+                ><a href="#booking" class="service-book-link"
                   >Book Now <i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
@@ -388,6 +388,16 @@
 
           <!-- Multi-step form -->
           <div class="booking-form-wrap reveal-right">
+            <!-- Inline form-level error banner -->
+            <div
+              id="bookingFormError"
+              class="booking-error-banner"
+              style="display: none"
+            >
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <span id="bookingFormErrorText">Something went wrong.</span>
+            </div>
+
             <div class="booking-steps">
               <div class="bstep active" id="bstep1">
                 <div class="bstep-num">1</div>
@@ -449,6 +459,7 @@
                     ><span>Consultation</span>
                   </div>
                 </div>
+                <small id="serviceError" class="text-danger"></small>
                 <div class="bform-location">
                   <label>Preferred Location</label>
                   <div class="location-picks">
@@ -477,6 +488,7 @@
                       id="apptDate"
                       required
                     />
+                    <small id="dateError" class="text-danger"></small>
                   </div>
                   <div class="col-md-6">
                     <label class="bform-label">Estimated Duration</label>
@@ -501,6 +513,7 @@
                   <div class="tslot" data-time="5:00 PM">5:00 PM</div>
                   <div class="tslot" data-time="6:00 PM">6:00 PM</div>
                 </div>
+                <small id="timeError" class="text-danger"></small>
                 <div class="bform-nav">
                   <button
                     type="button"
@@ -532,6 +545,7 @@
                       placeholder="Your full name"
                       required
                     />
+                    <small id="nameError" class="text-danger"></small>
                   </div>
                   <div class="col-md-6">
                     <label class="bform-label">Email Address *</label>
@@ -542,6 +556,7 @@
                       placeholder="your@email.com"
                       required
                     />
+                    <small id="emailError" class="text-danger"></small>
                   </div>
                   <div class="col-md-6">
                     <label class="bform-label">Phone Number *</label>
@@ -552,6 +567,7 @@
                       placeholder="+234 xxx xxx xxxx"
                       required
                     />
+                    <small id="phoneError" class="text-danger"></small>
                   </div>
                   <div class="col-md-6">
                     <label class="bform-label">Preferred Contact</label>
@@ -599,8 +615,18 @@
                   >
                     <i class="fa-solid fa-arrow-left"></i> Back
                   </button>
-                  <button type="submit" class="btn-bform-submit">
-                    Confirm Booking <i class="fa-solid fa-check"></i>
+                  <button
+                    type="submit"
+                    class="btn-bform-submit"
+                    id="bformSubmitBtn"
+                  >
+                    <span class="btn-label"
+                      >Confirm Booking <i class="fa-solid fa-check"></i
+                    ></span>
+                    <span class="btn-loading" style="display: none"
+                      ><i class="fa-solid fa-spinner fa-spin"></i>
+                      Submitting...</span
+                    >
                   </button>
                 </div>
               </div>
@@ -616,9 +642,9 @@
                 </div>
                 <h3>Appointment Requested!</h3>
                 <p>
-                  Thank you! We've received your booking request. Our team will
-                  confirm your appointment within 24 hours via your preferred
-                  contact method.
+                  Thank you! We've received your booking request
+                  <strong id="successRef"></strong>. Our team will confirm your
+                  appointment within 24 hours via your preferred contact method.
                 </p>
                 <p class="success-sub">
                   A copy will also be sent to your email.
@@ -689,7 +715,7 @@
               </div>
             </div>
             <div class="bridal-actions">
-              <a href="#booking" class="btn-salon-primary"
+              <a href="#booking" class="btn-salon-primary booksalon"
                 ><span>Book Bridal Session</span></a
               >
               <a
@@ -765,10 +791,8 @@
                   data-bs-parent="#faqAccordion"
                 >
                   <div class="accordion-body">
-                    Wig installations typically last 2-4 weeks depending on your
-                    lifestyle, maintenance routine, and installation method. We
-                    provide detailed aftercare guidance to help extend
-                    longevity.
+                    Wig installation lasts for 48hrs and more depending on
+                    client's maintenance
                   </div>
                 </div>
               </div>
@@ -1032,238 +1056,7 @@
       </div>
     </footer>
 
+    <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      let selectedService = "",
-        selectedLocation = "Lagos",
-        selectedTime = "";
-
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.getElementById("page-loader").classList.add("loaded");
-          document.body.style.overflow = "";
-        }, 1500);
-      });
-      document.body.style.overflow = "hidden";
-
-      const cursor = document.getElementById("cursor"),
-        cursorRing = document.getElementById("cursorRing");
-      let mX = 0,
-        mY = 0,
-        rX = 0,
-        rY = 0;
-      document.addEventListener("mousemove", (e) => {
-        mX = e.clientX;
-        mY = e.clientY;
-        cursor.style.left = mX + "px";
-        cursor.style.top = mY + "px";
-      });
-      (function animRing() {
-        rX += (mX - rX) * 0.12;
-        rY += (mY - rY) * 0.12;
-        cursorRing.style.left = rX + "px";
-        cursorRing.style.top = rY + "px";
-        requestAnimationFrame(animRing);
-      })();
-      document
-        .querySelectorAll("a,button,.spick-card,.tslot,.service-card")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () => {
-            cursor.classList.add("hovered");
-            cursorRing.classList.add("hovered");
-          });
-          el.addEventListener("mouseleave", () => {
-            cursor.classList.remove("hovered");
-            cursorRing.classList.remove("hovered");
-          });
-        });
-
-      window.addEventListener("scroll", () => {
-        document
-          .getElementById("mainNav")
-          .classList.toggle("scrolled", window.scrollY > 50);
-      });
-
-      const ro = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-      );
-      document
-        .querySelectorAll(".reveal,.reveal-left,.reveal-right")
-        .forEach((el) => ro.observe(el));
-
-      document.querySelectorAll(".reveal-hero").forEach((el, i) => {
-        el.style.animationDelay = 0.2 + i * 0.15 + "s";
-        el.classList.add("animating");
-      });
-
-      document.getElementById("apptDate").min = new Date()
-        .toISOString()
-        .split("T")[0];
-
-      document.querySelectorAll(".spick-card").forEach((c) => {
-        c.addEventListener("click", function () {
-          document
-            .querySelectorAll(".spick-card")
-            .forEach((x) => x.classList.remove("selected"));
-          this.classList.add("selected");
-          selectedService = this.dataset.service;
-          document.getElementById("sumService").textContent = selectedService;
-        });
-      });
-
-      document.querySelectorAll(".loc-pick").forEach((l) => {
-        l.addEventListener("click", function () {
-          document
-            .querySelectorAll(".loc-pick")
-            .forEach((x) => x.classList.remove("active"));
-          this.classList.add("active");
-          selectedLocation = this.dataset.loc;
-          document.getElementById("sumLocation").textContent =
-            selectedLocation + " Studio";
-        });
-      });
-
-      document.querySelectorAll(".tslot").forEach((s) => {
-        s.addEventListener("click", function () {
-          document
-            .querySelectorAll(".tslot")
-            .forEach((x) => x.classList.remove("selected"));
-          this.classList.add("selected");
-          selectedTime = this.dataset.time;
-          document.getElementById("sumTime").textContent = selectedTime;
-        });
-      });
-
-      document
-        .getElementById("apptDate")
-        .addEventListener("change", function () {
-          const d = new Date(this.value + "T00:00:00");
-          document.getElementById("sumDate").textContent = d.toLocaleDateString(
-            "en-US",
-            { weekday: "long", year: "numeric", month: "long", day: "numeric" },
-          );
-        });
-
-      function bNext(step) {
-        if (step === 2 && !selectedService) {
-          shakeForm();
-          return;
-        }
-        if (step === 3) {
-          const date = document.getElementById("apptDate").value;
-          if (!date || !selectedTime) {
-            shakeForm();
-            return;
-          }
-        }
-        showStep(step);
-      }
-      function bPrev(step) {
-        showStep(step);
-      }
-      function showStep(step) {
-        document
-          .querySelectorAll(".bform-step")
-          .forEach((s) => (s.style.display = "none"));
-        const el = document.getElementById("bform" + step);
-        if (el) {
-          el.style.display = "block";
-          el.style.animation = "stepFadeUp .4s ease both";
-        }
-        updateStepIndicators(step);
-      }
-      function updateStepIndicators(step) {
-        for (let i = 1; i <= 3; i++) {
-          const ind = document.getElementById("bstep" + i);
-          ind.classList.remove("active", "done");
-          if (i < step) ind.classList.add("done");
-          else if (i === step) ind.classList.add("active");
-        }
-        document.getElementById("bline1").style.background =
-          step > 1 ? "var(--gold)" : "var(--light-gray)";
-        document.getElementById("bline2").style.background =
-          step > 2 ? "var(--gold)" : "var(--light-gray)";
-      }
-      function shakeForm() {
-        const f = document.querySelector(".booking-form-wrap");
-        f.style.animation = "shake .4s ease";
-        setTimeout(() => (f.style.animation = ""), 400);
-      }
-
-      document
-        .getElementById("bookingForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const name = document.getElementById("clientName").value.trim(),
-            email = document.getElementById("clientEmail").value.trim(),
-            phone = document.getElementById("clientPhone").value.trim();
-          if (!name || !email || !phone) {
-            shakeForm();
-            return;
-          }
-          document
-            .querySelectorAll(".bform-step")
-            .forEach((s) => (s.style.display = "none"));
-          const success = document.getElementById("bformSuccess");
-          success.style.display = "flex";
-          success.style.animation = "stepFadeUp .6s ease both";
-          document.getElementById("bstep3").classList.add("done");
-        });
-
-      function resetBookingForm() {
-        selectedService = "";
-        selectedTime = "";
-        selectedLocation = "Lagos";
-        document.getElementById("bformSuccess").style.display = "none";
-        document
-          .querySelectorAll(".spick-card")
-          .forEach((c) => c.classList.remove("selected"));
-        document
-          .querySelectorAll(".tslot")
-          .forEach((s) => s.classList.remove("selected"));
-        document.getElementById("bookingForm").reset();
-        document.getElementById("apptDate").value = "";
-        ["sumService", "sumDate", "sumTime"].forEach(
-          (id) => (document.getElementById(id).textContent = "-"),
-        );
-        document.getElementById("sumLocation").textContent = "Lagos Studio";
-        showStep(1);
-      }
-    </script>
-    <style>
-      @keyframes stepFadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        20% {
-          transform: translateX(-8px);
-        }
-        40% {
-          transform: translateX(8px);
-        }
-        60% {
-          transform: translateX(-5px);
-        }
-        80% {
-          transform: translateX(5px);
-        }
-      }
-    </style>
   </body>
 </html>

@@ -475,6 +475,9 @@ img {
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
+.booksalon {
+  color: black !important;
+}
 
 .btn-salon-primary {
   font-family: var(--font-body);
@@ -489,7 +492,7 @@ img {
   position: relative;
   overflow: hidden;
   transition: color 0.4s;
-  clip-path: polygon(9px 0%, 100% 0%, calc(100% - 9px) 100%, 0% 100%);
+  /* clip-path: polygon(9px 0%, 100% 0%, calc(100% - 9px) 100%, 0% 100%); */
   display: inline-block;
 }
 .btn-salon-primary::before {
@@ -1191,7 +1194,8 @@ img {
   gap: 10px;
   margin-top: 24px;
 }
-.btn-bform-next {
+.btn-bform-next,
+.bhbhbh {
   flex: 1;
   font-family: var(--font-body);
   font-size: 11px;
@@ -1223,6 +1227,9 @@ img {
 }
 .btn-bform-next:hover {
   color: var(--forest);
+}
+.bhbhbh:hover {
+  color: black !important;
 }
 .btn-bform-next:hover::before {
   transform: scaleX(1);
@@ -1729,7 +1736,7 @@ img {
   }
 }
 @media (max-width: 991px) {
-  .navbar{
+  .navbar {
     height: 100%;
   }
   .services-grid {
@@ -1830,3 +1837,71 @@ img {
     grid-template-columns: 1fr;
   }
 }
+.is-invalid {
+  border: 1px solid red !important;
+}
+
+small.text-danger {
+  display: block;
+  margin-top: 5px;
+}
+@keyframes stepFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+.text-danger {
+  display: block;
+  font-size: 11.5px;
+  color: #d9534f;
+  margin-top: 6px;
+  min-height: 14px;
+}
+.bform-input.is-invalid,
+select.bform-select.is-invalid {
+  border-color: #d9534f !important;
+}
+.booking-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(217, 83, 79, 0.08);
+  border: 1px solid rgba(217, 83, 79, 0.35);
+  color: #d9534f;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.booking-error-banner i {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+

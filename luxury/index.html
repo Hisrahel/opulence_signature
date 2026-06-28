@@ -31,7 +31,7 @@
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
       <div class="cart-drawer-head">
-        <h4>Your Cart</h4>
+        <h4>Your Cart (<span id="cartHeadCount">0</span>)</h4>
         <button
           class="cart-close-btn"
           id="cartCloseBtn"
@@ -40,6 +40,7 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
+
       <div class="cart-items" id="cartItems">
         <div class="cart-empty" id="cartEmpty">
           <i class="fa-solid fa-bag-shopping"></i>
@@ -47,17 +48,114 @@
           <span>Add some beautiful hair to get started</span>
         </div>
       </div>
+
       <div class="cart-footer" id="cartFooter" style="display: none">
-        <div class="cart-subtotal">
-          <span>Subtotal</span>
-          <span class="cart-subtotal-price" id="cartSubtotal">₦0</span>
+        <div class="cart-summary">
+          <div class="cart-summary-row">
+            <span>Items</span>
+            <strong id="cartItemCountSummary">0</strong>
+          </div>
+          <div class="cart-summary-row">
+            <span>Subtotal</span>
+            <strong id="cartSubtotalSummary">₦0</strong>
+          </div>
+          <div class="cart-summary-row">
+            <span>Delivery</span>
+            <strong id="cartDeliverySummary">Free</strong>
+          </div>
+          <div class="cart-summary-row cart-summary-total">
+            <span>Total</span>
+            <strong id="cartTotalSummary">₦0</strong>
+          </div>
         </div>
-        <p class="cart-note">Shipping & taxes calculated at checkout</p>
-        <a href="../saloon/index.html" class="btn-checkout">
-          <span>Proceed to Checkout</span>
+        <p class="cart-note" id="freeDeliveryNote">
+          Shipping &amp; taxes calculated at checkout
+        </p>
+
+        <button class="btn-checkout" id="checkoutToggleBtn" type="button">
+          <span>Checkout</span>
           <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <button class="btn-continue" onclick="closeCart()">
+        </button>
+
+        <div class="checkout-panel" id="checkoutPanel" style="display: none">
+          <div class="checkout-title">Complete your order</div>
+          <style>
+            .checkout-field-required label::after {
+              content: "*";
+              color: #d9534f;
+              padding-right: 5px !important;
+              padding-left: 5px !important;
+            }
+            .checkout-field {
+              display: flex !important;
+              justify-content: space-between;
+              margin-bottom: 16px;
+              align-items: center;
+            }
+            .checkout-field input,
+            .checkout-field textarea {
+              width: 75% !important;
+              font-size: 12px;
+            }
+            .checkout-field label {
+              font-size: 12px;
+            }
+          </style>
+          <div class="checkout-field checkout-field-required">
+            <label for="checkoutName">Full name</label>
+            <input
+              id="checkoutName"
+              type="text"
+              placeholder="Your name"
+              autocomplete="name"
+            />
+          </div>
+          <div class="checkout-field checkout-field-required">
+            <label for="checkoutPhone">Phone</label>
+            <input
+              id="checkoutPhone"
+              type="tel"
+              placeholder="+2348104240201"
+              autocomplete="tel"
+            />
+          </div>
+          <div class="checkout-field">
+            <label for="checkoutEmail">Email</label>
+            <input
+              id="checkoutEmail"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <div class="checkout-field checkout-field-required">
+            <label for="checkoutAddress">Delivery address</label>
+            <textarea
+              id="checkoutAddress"
+              rows="3"
+              placeholder="Lagos / Osogbo address"
+            ></textarea>
+          </div>
+          <div class="checkout-field">
+            <label for="checkoutNotes">Note</label>
+            <textarea
+              id="checkoutNotes"
+              rows="2"
+              placeholder="Any extra details"
+            ></textarea>
+          </div>
+
+          <button
+            class="btn-checkout submit"
+            id="submitCheckoutBtn"
+            type="button"
+          >
+            <span>Place Order</span>
+          </button>
+          <div class="checkout-status" id="checkoutStatus"></div>
+        </div>
+
+        <button class="btn-continue" id="continueShoppingBtn" type="button">
           Continue Shopping
         </button>
       </div>
@@ -75,7 +173,7 @@
           <div class="topbar-center">
             <i class="fa-solid fa-truck-fast"></i>
             <span
-              >Free delivery on orders over ₦50,000 &nbsp;·&nbsp; Lagos &
+              >Free delivery on orders over ₦50,000 &nbsp;·&nbsp; Lagos &amp;
               Osogbo</span
             >
           </div>
@@ -120,7 +218,9 @@
         <div class="collapse navbar-collapse" id="luxNavbar">
           <ul class="navbar-nav mx-auto gap-lg-4">
             <li class="nav-item">
-              <a class="nav-link" href="#products">All Hair</a>
+              <a class="nav-link" data-filter="all" href="#products"
+                >All Hair</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#products" data-filter="extensions"
@@ -142,12 +242,7 @@
             </li>
           </ul>
           <!-- Cart icon -->
-          <button
-            class="cart-nav-btn"
-            id="cartNavBtn"
-            onclick="openCart()"
-            aria-label="Open cart"
-          >
+          <button class="cart-nav-btn" id="cartNavBtn" aria-label="Open cart">
             <i class="fa-solid fa-bag-shopping"></i>
             <span class="cart-count" id="cartCount">0</span>
           </button>
@@ -236,15 +331,13 @@
               <option value="default">Sort by: Featured</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
-              <option value="name">Name A–Z</option>
+              <option value="name">Name A-Z</option>
             </select>
           </div>
         </div>
 
         <!-- Product Grid -->
-        <div class="products-grid" id="productsGrid">
-          <!-- Products are rendered by JS from the catalog array -->
-        </div>
+        <div class="products-grid" id="productsGrid"></div>
 
         <!-- Empty state -->
         <div class="products-empty" id="productsEmpty" style="display: none">
@@ -262,7 +355,7 @@
             <div class="why-icon">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h5>Grade 10A Quality</h5>
+            <h5>We sell Donor Hairs</h5>
             <p>
               Only the finest ethically sourced human hair, curated for
               softness, strength, and longevity.
@@ -278,11 +371,8 @@
           </div>
           <div class="why-item">
             <div class="why-icon"><i class="fa-solid fa-truck-fast"></i></div>
-            <h5>Fast Delivery</h5>
-            <p>
-              Lagos & Osogbo same-day or next-day delivery. Free shipping on
-              orders above ₦50,000.
-            </p>
+            <h5>24 - 48 hrs Delivery</h5>
+            <p>Delivery takes 48hrs depending on location.</p>
           </div>
           <div class="why-item">
             <div class="why-icon"><i class="fa-solid fa-comments"></i></div>
@@ -327,13 +417,13 @@
           <div class="modal-qty-row">
             <label>Quantity</label>
             <div class="qty-control">
-              <button class="qty-btn" id="qtyMinus">−</button>
+              <button class="qty-btn" id="qtyMinus" type="button">−</button>
               <span class="qty-val" id="qtyVal">1</span>
-              <button class="qty-btn" id="qtyPlus">+</button>
+              <button class="qty-btn" id="qtyPlus" type="button">+</button>
             </div>
           </div>
 
-          <button class="btn-add-to-cart" id="modalAddToCart">
+          <button class="btn-add-to-cart" id="modalAddToCart" type="button">
             <i class="fa-solid fa-bag-shopping"></i>
             <span>Add to Cart</span>
           </button>
@@ -348,6 +438,9 @@
         </div>
       </div>
     </div>
+
+    <!-- ==================== TOAST ==================== -->
+    <div class="cart-toast" id="cartToast"></div>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
@@ -379,35 +472,10 @@
           <div class="footer-col">
             <h6>Shop</h6>
             <ul>
-              <li>
-                <a
-                  href="#"
-                  data-filter="extensions"
-                  onclick="filterProducts('extensions')"
-                  >Hair Extensions</a
-                >
-              </li>
-              <li>
-                <a href="#" data-filter="wigs" onclick="filterProducts('wigs')"
-                  >Custom Wigs</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-filter="bundles"
-                  onclick="filterProducts('bundles')"
-                  >Bundles</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-filter="closures"
-                  onclick="filterProducts('closures')"
-                  >Closures</a
-                >
-              </li>
+              <li><a href="#" data-filter="extensions">Hair Extensions</a></li>
+              <li><a href="#" data-filter="wigs">Custom Wigs</a></li>
+              <li><a href="#" data-filter="bundles">Bundles</a></li>
+              <li><a href="#" data-filter="closures">Closures</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -434,506 +502,16 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2026 Opulence Luxury. All rights reserved.</p>
+          <p>&copy; <?= date('Y') ?> Opulence Luxury. All rights reserved.</p>
           <p>
-            Designed & crafted by
+            Designed &amp; crafted by
             <a href="https://wa.me/+2348180980419">HISRAEL_TECH</a>
           </p>
         </div>
       </div>
     </footer>
 
+    <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // ===== PRODUCT CATALOG =====
-      // Admin will manage this via PHP/backend later.
-      // For now, placeholder products - images can be replaced by admin.
-      const PRODUCTS = [
-        {
-          id: 1,
-          name: "Bone Straight Extension",
-          category: "extensions",
-          price: 45000,
-          image: "../images/extension.webp",
-          badge: "Bestseller",
-          desc: "Ultra-sleek, bone straight human hair extensions. Silky smooth texture with a natural lustre that blends perfectly with all hair types.",
-          lengths: ['12"', '14"', '16"', '18"', '20"', '22"', '24"'],
-          textures: ["Bone Straight"],
-        },
-        {
-          id: 2,
-          name: "Body Wave Wig",
-          category: "wigs",
-          price: 75000,
-          image: "../images/wig.webp",
-          badge: "New In",
-          desc: "Full lace body wave wig with pre-plucked hairline. Natural bounce and movement that mimics freshly styled hair.",
-          lengths: ['14"', '16"', '18"', '20"', '22"'],
-          textures: ["Body Wave"],
-        },
-        {
-          id: 3,
-          name: "Deep Wave Bundle (3pcs)",
-          category: "bundles",
-          price: 85000,
-          image: "../images/sec.webp",
-          badge: "Bundle Deal",
-          desc: "3-piece deep wave bundle set. Rich, voluminous waves with exceptional density. Perfect for full sew-in installs.",
-          lengths: ['12"', '14"', '16"', '18"'],
-          textures: ["Deep Wave"],
-        },
-        {
-          id: 4,
-          name: "HD Lace Closure 5×5",
-          category: "closures",
-          price: 35000,
-          image: "../images/first.webp",
-          badge: null,
-          desc: "Ultra-thin HD lace that melts seamlessly into the scalp. Gives a natural, undetectable finish for any install.",
-          lengths: ['12"', '14"', '16"'],
-          textures: ["Straight", "Body Wave", "Deep Wave"],
-        },
-        {
-          id: 5,
-          name: "Kinky Curly Wig",
-          category: "wigs",
-          price: 80000,
-          image: "../images/bride.webp",
-          badge: "Popular",
-          desc: "Full and lush kinky curly wig with a natural afro-textured curl pattern. Pre-plucked with baby hairs.",
-          lengths: ['14"', '16"', '18"', '20"'],
-          textures: ["Kinky Curly"],
-        },
-        {
-          id: 6,
-          name: "Loose Wave Extension",
-          category: "extensions",
-          price: 50000,
-          image: "../images/revamp.webp",
-          badge: null,
-          desc: "Effortlessly beautiful loose wave extensions with soft, flowing waves. Versatile enough to style straight or curly.",
-          lengths: ['14"', '16"', '18"', '20"', '22"', '24"'],
-          textures: ["Loose Wave"],
-        },
-        {
-          id: 7,
-          name: "Straight Bundle (2pcs)",
-          category: "bundles",
-          price: 60000,
-          image: "../images/consult.webp",
-          badge: null,
-          desc: "Silky straight 2-bundle deal - perfect for a sleek, polished sew-in look. Holds curls beautifully too.",
-          lengths: ['14"', '16"', '18"', '20"'],
-          textures: ["Straight"],
-        },
-        {
-          id: 8,
-          name: "Frontal 13×4 HD Lace",
-          category: "closures",
-          price: 55000,
-          image: "../images/treatment.png",
-          badge: "Premium",
-          desc: "13×4 HD lace frontal with natural pre-plucked hairline. Pairs perfectly with any bundle set for a full lace look.",
-          lengths: ['12"', '14"', '16"', '18"'],
-          textures: ["Straight", "Body Wave"],
-        },
-      ];
-
-      // ===== CART STATE =====
-      let cart = JSON.parse(localStorage.getItem("opulence_cart") || "[]");
-      let activeFilter = "all";
-      let modalProduct = null;
-      let modalQty = 1;
-      let selectedLength = "";
-      let selectedTexture = "";
-
-      // ===== FORMAT PRICE =====
-      const fmt = (n) => "₦" + n.toLocaleString("en-NG");
-
-      // ===== RENDER PRODUCTS =====
-      function renderProducts(filter = "all", sort = "default") {
-        let list =
-          filter === "all"
-            ? [...PRODUCTS]
-            : PRODUCTS.filter((p) => p.category === filter);
-
-        if (sort === "price-low") list.sort((a, b) => a.price - b.price);
-        else if (sort === "price-high") list.sort((a, b) => b.price - a.price);
-        else if (sort === "name")
-          list.sort((a, b) => a.name.localeCompare(b.name));
-
-        const grid = document.getElementById("productsGrid");
-        const empty = document.getElementById("productsEmpty");
-        const count = document.getElementById("productCount");
-
-        count.textContent = `${list.length} product${list.length !== 1 ? "s" : ""}`;
-
-        if (list.length === 0) {
-          grid.innerHTML = "";
-          empty.style.display = "flex";
-          return;
-        }
-        empty.style.display = "none";
-
-        grid.innerHTML = list
-          .map(
-            (p) => `
-        <div class="product-card" data-id="${p.id}">
-          <div class="product-card-img" onclick="openModal(${p.id})">
-            <img src="${p.image}" alt="${p.name}" loading="lazy" />
-            <div class="product-card-overlay"></div>
-            ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ""}
-            <button class="product-quick-view" onclick="event.stopPropagation(); openModal(${p.id})">
-              Quick View
-            </button>
-          </div>
-          <div class="product-card-body">
-            <span class="product-category-tag">${p.category}</span>
-            <h4 class="product-name">${p.name}</h4>
-            <div class="product-price-row">
-              <span class="product-price">${fmt(p.price)}</span>
-              <button class="product-add-btn" onclick="quickAddToCart(${p.id})" aria-label="Add to cart">
-                <i class="fa-solid fa-plus"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      `,
-          )
-          .join("");
-      }
-
-      // ===== FILTER =====
-      function filterProducts(filter) {
-        activeFilter = filter;
-        document.querySelectorAll(".filter-btn").forEach((b) => {
-          b.classList.toggle(
-            "active",
-            b.dataset.filter === filter ||
-              (filter === "all" && b.dataset.filter === "all"),
-          );
-        });
-        renderProducts(filter, document.getElementById("sortSelect").value);
-        document
-          .getElementById("products")
-          .scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        renderProducts();
-
-        document.querySelectorAll(".filter-btn").forEach((btn) => {
-          btn.addEventListener("click", () =>
-            filterProducts(btn.dataset.filter),
-          );
-        });
-        document
-          .getElementById("sortSelect")
-          .addEventListener("change", (e) => {
-            renderProducts(activeFilter, e.target.value);
-          });
-
-        // Nav filter links
-        document.querySelectorAll(".nav-link[data-filter]").forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            filterProducts(link.dataset.filter);
-          });
-        });
-
-        updateCartUI();
-      });
-
-      // ===== MODAL =====
-      function openModal(id) {
-        modalProduct = PRODUCTS.find((p) => p.id === id);
-        if (!modalProduct) return;
-        modalQty = 1;
-        selectedLength = modalProduct.lengths[0];
-        selectedTexture = modalProduct.textures[0];
-
-        document.getElementById("modalImg").src = modalProduct.image;
-        document.getElementById("modalImg").alt = modalProduct.name;
-        document.getElementById("modalTitle").textContent = modalProduct.name;
-        document.getElementById("modalPrice").textContent = fmt(
-          modalProduct.price,
-        );
-        document.getElementById("modalDesc").textContent = modalProduct.desc;
-        document.getElementById("modalCategory").textContent =
-          modalProduct.category.toUpperCase();
-        document.getElementById("qtyVal").textContent = 1;
-
-        const badge = document.getElementById("modalBadge");
-        badge.textContent = modalProduct.badge || "";
-        badge.style.display = modalProduct.badge ? "block" : "none";
-
-        // Lengths
-        const lengthsEl = document.getElementById("modalLengths");
-        lengthsEl.innerHTML = modalProduct.lengths
-          .map(
-            (l, i) =>
-              `<button class="option-pill ${i === 0 ? "active" : ""}" data-type="length" data-val="${l}">${l}</button>`,
-          )
-          .join("");
-
-        // Textures
-        const texturesEl = document.getElementById("modalTextures");
-        texturesEl.innerHTML = modalProduct.textures
-          .map(
-            (t, i) =>
-              `<button class="option-pill ${i === 0 ? "active" : ""}" data-type="texture" data-val="${t}">${t}</button>`,
-          )
-          .join("");
-
-        document.querySelectorAll(".option-pill").forEach((pill) => {
-          pill.addEventListener("click", function () {
-            const type = this.dataset.type;
-            document
-              .querySelectorAll(`.option-pill[data-type="${type}"]`)
-              .forEach((p) => p.classList.remove("active"));
-            this.classList.add("active");
-            if (type === "length") selectedLength = this.dataset.val;
-            else selectedTexture = this.dataset.val;
-          });
-        });
-
-        document.getElementById("productModal").classList.add("open");
-        document.getElementById("productModalOverlay").classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        document.getElementById("productModal").classList.remove("open");
-        document.getElementById("productModalOverlay").classList.remove("open");
-        document.body.style.overflow = "";
-      }
-
-      document
-        .getElementById("modalClose")
-        .addEventListener("click", closeModal);
-      document
-        .getElementById("productModalOverlay")
-        .addEventListener("click", closeModal);
-
-      // Qty controls
-      document.getElementById("qtyMinus").addEventListener("click", () => {
-        if (modalQty > 1) {
-          modalQty--;
-          document.getElementById("qtyVal").textContent = modalQty;
-        }
-      });
-      document.getElementById("qtyPlus").addEventListener("click", () => {
-        modalQty++;
-        document.getElementById("qtyVal").textContent = modalQty;
-      });
-
-      // Add to cart from modal
-      document
-        .getElementById("modalAddToCart")
-        .addEventListener("click", () => {
-          if (!modalProduct) return;
-          addToCart(modalProduct, modalQty, selectedLength, selectedTexture);
-          closeModal();
-          openCart();
-        });
-
-      // ===== CART =====
-      function quickAddToCart(id) {
-        const p = PRODUCTS.find((p) => p.id === id);
-        if (!p) return;
-        addToCart(p, 1, p.lengths[0], p.textures[0]);
-        openCart();
-      }
-
-      function addToCart(product, qty, length, texture) {
-        const key = `${product.id}-${length}-${texture}`;
-        const existing = cart.find((i) => i.key === key);
-        if (existing) {
-          existing.qty += qty;
-        } else {
-          cart.push({
-            key,
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            length,
-            texture,
-            qty,
-          });
-        }
-        saveCart();
-        updateCartUI();
-        flashCartBtn();
-      }
-
-      function removeFromCart(key) {
-        cart = cart.filter((i) => i.key !== key);
-        saveCart();
-        updateCartUI();
-        renderCartItems();
-      }
-
-      function saveCart() {
-        localStorage.setItem("opulence_cart", JSON.stringify(cart));
-      }
-
-      function updateCartUI() {
-        const total = cart.reduce((s, i) => s + i.qty, 0);
-        document.getElementById("cartCount").textContent = total;
-        document.getElementById("cartCount").style.display =
-          total > 0 ? "flex" : "none";
-      }
-
-      function flashCartBtn() {
-        const btn = document.getElementById("cartNavBtn");
-        btn.classList.add("flash");
-        setTimeout(() => btn.classList.remove("flash"), 600);
-      }
-
-      function openCart() {
-        renderCartItems();
-        document.getElementById("cartDrawer").classList.add("open");
-        document.getElementById("cartOverlay").classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeCart() {
-        document.getElementById("cartDrawer").classList.remove("open");
-        document.getElementById("cartOverlay").classList.remove("open");
-        document.body.style.overflow = "";
-      }
-
-      document
-        .getElementById("cartCloseBtn")
-        .addEventListener("click", closeCart);
-      document
-        .getElementById("cartOverlay")
-        .addEventListener("click", closeCart);
-      document.getElementById("cartNavBtn").addEventListener("click", openCart);
-
-      function renderCartItems() {
-        const el = document.getElementById("cartItems");
-        const footer = document.getElementById("cartFooter");
-        const empty = document.getElementById("cartEmpty");
-
-        if (cart.length === 0) {
-          empty.style.display = "flex";
-          footer.style.display = "none";
-          el.innerHTML = "";
-          el.appendChild(empty);
-          return;
-        }
-
-        empty.style.display = "none";
-        footer.style.display = "block";
-
-        const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-        document.getElementById("cartSubtotal").textContent = fmt(subtotal);
-
-        el.innerHTML = cart
-          .map(
-            (item) => `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-img" />
-          <div class="cart-item-details">
-            <h5>${item.name}</h5>
-            <span>${item.length} · ${item.texture}</span>
-            <div class="cart-item-price-row">
-              <span class="cart-item-price">${fmt(item.price * item.qty)}</span>
-              <div class="cart-item-qty">
-                <button onclick="changeCartQty('${item.key}', -1)">−</button>
-                <span>${item.qty}</span>
-                <button onclick="changeCartQty('${item.key}', 1)">+</button>
-              </div>
-            </div>
-          </div>
-          <button class="cart-item-remove" onclick="removeFromCart('${item.key}')" aria-label="Remove">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      `,
-          )
-          .join("");
-      }
-
-      function changeCartQty(key, delta) {
-        const item = cart.find((i) => i.key === key);
-        if (!item) return;
-        item.qty += delta;
-        if (item.qty <= 0) removeFromCart(key);
-        else {
-          saveCart();
-          updateCartUI();
-          renderCartItems();
-        }
-      }
-
-      // ===== CURSOR =====
-      const cursor = document.getElementById("cursor");
-      const cursorRing = document.getElementById("cursorRing");
-      let mX = 0,
-        mY = 0,
-        rX = 0,
-        rY = 0;
-      document.addEventListener("mousemove", (e) => {
-        mX = e.clientX;
-        mY = e.clientY;
-        cursor.style.left = mX + "px";
-        cursor.style.top = mY + "px";
-      });
-      (function animRing() {
-        rX += (mX - rX) * 0.12;
-        rY += (mY - rY) * 0.12;
-        cursorRing.style.left = rX + "px";
-        cursorRing.style.top = rY + "px";
-        requestAnimationFrame(animRing);
-      })();
-      document.querySelectorAll("a, button, .product-card").forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-          cursor.classList.add("hovered");
-          cursorRing.classList.add("hovered");
-        });
-        el.addEventListener("mouseleave", () => {
-          cursor.classList.remove("hovered");
-          cursorRing.classList.remove("hovered");
-        });
-      });
-
-      // ===== PAGE LOADER =====
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.getElementById("page-loader").classList.add("loaded");
-          document.body.style.overflow = "";
-        }, 1500);
-      });
-      document.body.style.overflow = "hidden";
-
-      // ===== NAVBAR SCROLL =====
-      window.addEventListener("scroll", () => {
-        document
-          .getElementById("mainNav")
-          .classList.toggle("scrolled", window.scrollY > 50);
-      });
-
-      // ===== SCROLL REVEAL =====
-      const ro = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-      );
-      document
-        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
-        .forEach((el) => ro.observe(el));
-
-      // ===== HERO REVEAL =====
-      document.querySelectorAll(".reveal-hero").forEach((el, i) => {
-        el.style.animationDelay = 0.2 + i * 0.15 + "s";
-        el.classList.add("animating");
-      });
-    </script>
   </body>
 </html>
