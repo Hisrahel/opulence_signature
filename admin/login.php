@@ -179,6 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: absolute;
             right: 14px;
             top: 50%;
+            right: 40px;
             transform: translateY(-50%);
             color: #555;
             cursor: pointer;
