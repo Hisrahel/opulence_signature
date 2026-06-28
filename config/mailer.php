@@ -41,9 +41,9 @@ if (!defined('APP_ROOT')) {
 
 define('SMTP_HOST',       'smtp.gmail.com');
 define('SMTP_PORT',       587);
-define('SMTP_USERNAME',   'opulencesignature001@gmail.com'); 
+define('SMTP_USERNAME',   'olayemisrael5@gmail.com');
 define('SMTP_ENCRYPTION', 'tls'); // 'tls' or 'ssl'
-define('SMTP_FROM_EMAIL', 'olayemisrael5@gmail.com');   // ← change this
+define('SMTP_FROM_EMAIL', 'opulencesignature001@gmail.com');   // ← change this
 define('SMTP_FROM_NAME',  'Opulence Signature Admin');
 
 /**
