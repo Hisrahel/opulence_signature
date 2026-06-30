@@ -388,7 +388,6 @@
     if (freeNote) {
       if (subtotal > 0 && subtotal < FREE_DELIVERY_THRESHOLD) {
         const remaining = FREE_DELIVERY_THRESHOLD - subtotal;
-        freeNote.textContent = `Add ${fmt(remaining)} more for free delivery!`;
         freeNote.classList.add("cart-note-highlight");
       } else {
         freeNote.textContent = "Shipping & taxes calculated at checkout";

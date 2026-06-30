@@ -34,9 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $stmt->fetch();
 
             if ($user) {
-                // Generate a readable temporary password:
-                // 2 uppercase + 4 lowercase + 2 digits + 1 symbol = 9 chars
-                // Readable characters only (no 0/O/I/l confusion)
                 $upper   = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
                 $lower   = 'abcdefghjkmnpqrstuvwxyz';
                 $digits  = '23456789';
@@ -94,11 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 ";
 
-                sendMail($email, $user['full_name'], $subject, $html);
+                if (!sendMail($email, $user['full_name'], $subject, $html)) {
+                    error_log('Mail error: ' . ($GLOBALS['last_mail_error'] ?? 'unknown'));
+                    $error = 'Mail failed: ' . ($GLOBALS['last_mail_error'] ?? 'unknown error');
+                } else {
+                    $submitted = true;
+                }
             }
-            // Same message whether email matched or not — don't reveal
-            // which emails have admin accounts.
-            $submitted = true;
+            if (!$error && !$submitted) {
+                $submitted = true;
+            }
         } catch (Exception $e) {
             $error = 'Something went wrong. Please try again.';
         }

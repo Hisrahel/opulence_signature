@@ -1,30 +1,5 @@
 <?php
-// config/mailer.php — Sends transactional emails (password-change alerts, etc.)
-//
-// REQUIRES PHPMailer. Install once via Composer from your project root:
-//   composer require phpmailer/phpmailer
-//
-// This creates a /vendor folder and vendor/autoload.php, which this file
-// loads automatically if present. If PHPMailer is NOT installed yet,
-// every function below fails safely (returns false, logs to error_log)
-// instead of crashing the page — so changing your password still works
-// even before you've set up email.
-//
-// ------------------------------------------------------------------
-// SMTP CONFIGURATION — fill these in with your real provider details.
-// Gmail: use an "App Password" (not your normal Gmail password) —
-// generate one at https://myaccount.google.com/apppasswords
-// (requires 2-Step Verification to be enabled on the Google account).
-// Alternatively use a transactional provider (Brevo, SendGrid, Mailgun, etc.)
-// which tends to be more reliable for automated mail than personal Gmail.
-// ------------------------------------------------------------------
 
-// Defined defensively here (not just in admin/_layout.php) because this
-// file is also required directly by pages outside the admin layout —
-// login.php, forgot-password.php, reset-password.php — which run before
-// any admin session exists and never load _layout.php.
-
-// Load .env file if it exists
 $envFile = __DIR__ . '/.env';
 if (is_file($envFile)) {
     foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
@@ -40,18 +15,12 @@ if (!defined('APP_ROOT')) {
 }
 
 define('SMTP_HOST',       'smtp.gmail.com');
-define('SMTP_PORT',       587);
+define('SMTP_PORT',       465);
 define('SMTP_USERNAME',   'olayemisrael5@gmail.com');
-define('SMTP_ENCRYPTION', 'tls'); // 'tls' or 'ssl'
-define('SMTP_FROM_EMAIL', 'opulencesignature001@gmail.com');   // ← change this
+define('SMTP_ENCRYPTION', 'ssl');
+define('SMTP_FROM_EMAIL', 'olayemisrael5@gmail.com');
 define('SMTP_FROM_NAME',  'Opulence Signature Admin');
 
-/**
- * Sends an email via SMTP using PHPMailer.
- * Returns true on success. On failure, returns false AND stores the real
- * error reason in $GLOBALS['last_mail_error'] so callers (like
- * settings.php) can surface it to the admin instead of a generic message.
- */
 function sendMail(string $toEmail, string $toName, string $subject, string $htmlBody, string $plainBody = ''): bool
 {
     $GLOBALS['last_mail_error'] = '';
@@ -112,17 +81,6 @@ function sendMail(string $toEmail, string $toName, string $subject, string $html
     }
 }
 
-/**
- * Sends the "your admin password was changed" security notification.
- *
- * Per the site owner's explicit request, this email includes the actual
- * new plaintext password so they can confirm exactly what it was changed
- * to. This is a deliberate trade-off the owner has accepted: the email
- * becomes a standing, indefinite copy of the live admin password sitting
- * in an inbox (synced across devices, searchable, outside this app's
- * control). If that risk ever stops being acceptable, drop the
- * $newPassword param/block below and keep just the time/IP confirmation.
- */
 function sendPasswordChangedEmail(string $toEmail, string $adminName, string $username, string $newPassword): bool
 {
     $time = date('l, d F Y \a\t H:i:s');

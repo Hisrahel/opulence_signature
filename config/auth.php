@@ -1,24 +1,15 @@
 <?php
-// config/auth.php - Admin session auth helper
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-/**
- * Builds a correct URL path to a file inside /admin/, regardless of
- * whether the app is installed at the domain root (e.g. /admin/login.php)
- * or inside a subfolder (e.g. /signature/admin/login.php).
- *
- * Works by reading the current request's directory from SCRIPT_NAME,
- * which always reflects the real install path on the server.
- */
+
 function adminUrl(string $file): string
 {
     $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/admin'));
     $scriptDir = rtrim($scriptDir, '/');
 
-    // If the current script isn't inside /admin (rare), append it.
     if (basename($scriptDir) !== 'admin') {
         $scriptDir .= '/admin';
     }
