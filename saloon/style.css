@@ -1549,7 +1549,7 @@ img {
   transition: transform 0.35s var(--ease-expo);
 }
 .accordion-button:not(.collapsed)::after {
-  content: "−";
+  content: "-";
 }
 .accordion-body {
   font-size: 13px;

@@ -8,6 +8,7 @@
   const DELIVERY_FEE = 2500;
   const CART_STORAGE_KEY = "opulence_luxury_cart";
   const WHATSAPP_NUMBER = "2348104240201";
+  const MAX_QTY = 99;
 
   const $ = (id) => document.getElementById(id);
 
@@ -69,6 +70,17 @@
     const div = document.createElement("div");
     div.textContent = String(str ?? "");
     return div.innerHTML;
+  }
+
+  // Cart item keys can contain spaces / punctuation (lengths, textures).
+  // Encode them whenever they go into a DOM attribute, and decode them
+  // back out whenever they're read from a DOM attribute, so the +/- and
+  // remove buttons always resolve to the exact same cart line.
+  function encKey(str) {
+    return encodeURIComponent(String(str ?? ""));
+  }
+  function decKey(str) {
+    return decodeURIComponent(String(str ?? ""));
   }
 
   // =====================================================
@@ -286,12 +298,12 @@
   // =====================================================
   function addToCart(product, qty, length, texture) {
     if (!product || !product.inStock) return;
-    qty = Math.max(1, Math.floor(Number(qty) || 1));
+    qty = Math.max(1, Math.min(MAX_QTY, Math.floor(Number(qty) || 1)));
 
     const key = `${product.id}-${length}-${texture}`;
     const existing = cart.find((item) => item.key === key);
     if (existing) {
-      existing.qty += qty;
+      existing.qty = Math.min(existing.qty + qty, MAX_QTY);
     } else {
       cart.push({
         key,
@@ -335,6 +347,7 @@
       removeFromCart(key);
       return;
     }
+    item.qty = Math.min(item.qty, MAX_QTY);
     saveCart();
     updateCartUI();
     renderCartItems();
@@ -388,6 +401,7 @@
     if (freeNote) {
       if (subtotal > 0 && subtotal < FREE_DELIVERY_THRESHOLD) {
         const remaining = FREE_DELIVERY_THRESHOLD - subtotal;
+        freeNote.textContent = `Add ${fmt(remaining)} more for free delivery`;
         freeNote.classList.add("cart-note-highlight");
       } else {
         freeNote.textContent = "Shipping & taxes calculated at checkout";
@@ -416,19 +430,20 @@
     if (cart.length === 0) {
       empty.style.display = "flex";
       footer.style.display = "none";
-      el.innerHTML = "";
-      el.appendChild(empty);
+      el.querySelectorAll(".cart-item").forEach((node) => node.remove());
       toggleCheckoutPanel(false);
       return;
     }
 
     empty.style.display = "none";
     footer.style.display = "block";
+    el.querySelectorAll(".cart-item").forEach((node) => node.remove());
 
-    el.innerHTML = cart
-      .map(
-        (item) => `
-          <div class="cart-item">
+    const frag = document.createDocumentFragment();
+    cart.forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
             <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item-img" />
             <div class="cart-item-details">
               <h5>${escapeHtml(item.name)}</h5>
@@ -436,19 +451,19 @@
               <div class="cart-item-price-row">
                 <span class="cart-item-price">${fmt((Number(item.price) || 0) * (Number(item.qty) || 0))}</span>
                 <div class="cart-item-qty">
-                  <button type="button" data-qty-action="dec" data-key="${escapeHtml(item.key)}" aria-label="Decrease quantity">−</button>
+                  <button type="button" data-qty-action="dec" data-key="${encKey(item.key)}" aria-label="Decrease quantity">-</button>
                   <span>${item.qty}</span>
-                  <button type="button" data-qty-action="inc" data-key="${escapeHtml(item.key)}" aria-label="Increase quantity">+</button>
+                  <button type="button" data-qty-action="inc" data-key="${encKey(item.key)}" aria-label="Increase quantity">+</button>
                 </div>
               </div>
             </div>
-            <button class="cart-item-remove" data-remove-key="${escapeHtml(item.key)}" aria-label="Remove item">
+            <button class="cart-item-remove" data-remove-key="${encKey(item.key)}" aria-label="Remove item">
               <i class="fa-solid fa-xmark"></i>
             </button>
-          </div>
-        `,
-      )
-      .join("");
+      `;
+      frag.appendChild(div);
+    });
+    el.appendChild(frag);
 
     updateCartUI();
   }
@@ -600,13 +615,12 @@
         .join("\n");
 
       const waMessage =
-        `Hello Opulence Luxury, I just placed an order.\n\n` +
+        `Hello Opulence Signature, I just placed an order.\n\n` +
         `Order Ref: ${result.order_ref}\n` +
         `Customer: ${name}\nPhone: ${phone}\nEmail: ${email || "Not provided"}\n` +
         `Address: ${address}\nNotes: ${notes || "None"}\n\n` +
         `Items:\n${itemsText}\n\n` +
         `Subtotal: ${fmt(result.subtotal)}\n` +
-        `Delivery: ${result.delivery === 0 ? "Free" : fmt(result.delivery)}\n` +
         `Total: ${fmt(result.total)}`;
 
       setCheckoutStatus(
@@ -698,14 +712,14 @@
       // Delegated cart item qty / remove buttons
       const qtyBtn = event.target.closest("[data-qty-action]");
       if (qtyBtn) {
-        const key = qtyBtn.dataset.key;
+        const key = decKey(qtyBtn.dataset.key);
         const delta = qtyBtn.dataset.qtyAction === "inc" ? 1 : -1;
         changeCartQty(key, delta);
       }
 
       const removeBtn = event.target.closest("[data-remove-key]");
       if (removeBtn) {
-        removeFromCart(removeBtn.dataset.removeKey);
+        removeFromCart(decKey(removeBtn.dataset.removeKey));
       }
     });
 
@@ -719,7 +733,7 @@
       }
     });
     $("qtyPlus")?.addEventListener("click", () => {
-      modalQty = Math.min(modalQty + 1, 99);
+      modalQty = Math.min(modalQty + 1, MAX_QTY);
       $("qtyVal").textContent = modalQty;
     });
     $("modalAddToCart")?.addEventListener("click", () => {
@@ -848,45 +862,35 @@
       const ctrl = e.ctrlKey || e.metaKey;
       const shift = e.shiftKey;
 
-      // F12
       if (key === "F12") {
         e.preventDefault();
         e.stopPropagation();
         return false;
       }
-      // Ctrl+Shift+I (DevTools)
       if (ctrl && shift && (key === "I" || key === "i")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+Shift+J (Console)
       if (ctrl && shift && (key === "J" || key === "j")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+Shift+C (Inspector)
       if (ctrl && shift && (key === "C" || key === "c")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+U (View source)
       if (ctrl && (key === "U" || key === "u")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+S (Save page)
       if (ctrl && (key === "S" || key === "s")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+A (Select all)
       if (ctrl && (key === "A" || key === "a")) {
         e.preventDefault();
         return false;
       }
-      // Ctrl+C (Copy) - optional, uncomment to also block copying
-      // if (ctrl && (key === "C" || key === "c")) { e.preventDefault(); return false; }
-      // Ctrl+P (Print)
       if (ctrl && (key === "P" || key === "p")) {
         e.preventDefault();
         return false;
@@ -916,10 +920,8 @@
       if (widthDiff > threshold || heightDiff > threshold) {
         if (!devOpen) {
           devOpen = true;
-          // Blur the page content
           document.body.style.filter = "blur(12px)";
           document.body.style.pointerEvents = "none";
-          // Show warning overlay
           showDevWarning();
         }
       } else {

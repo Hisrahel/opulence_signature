@@ -378,7 +378,7 @@
           <div class="cart-item-price-row">
             <span class="cart-item-price">${fmt((+item.price || 0) * (+item.qty || 0))}</span>
             <div class="cart-item-qty">
-              <button type="button" data-qty-action="dec" data-key="${encKey(item.key)}" aria-label="Decrease">−</button>
+              <button type="button" data-qty-action="dec" data-key="${encKey(item.key)}" aria-label="Decrease">-</button>
               <span>${item.qty}</span>
               <button type="button" data-qty-action="inc" data-key="${encKey(item.key)}" aria-label="Increase">+</button>
             </div>
@@ -515,13 +515,16 @@
         .map((i) => `• ${i.name} (${i.color}) x${i.qty}`)
         .join("\n");
       const waMsg =
-        `Hello Opulence Tools, I just placed an order.\n\n` +
+       `Hello Opulence Signature, I just placed an order.\n\n` +
         `Order Ref: ${result.order_ref}\n` +
-        `Customer: ${name}\nPhone: ${phone}\nEmail: ${email || "N/A"}\nAddress: ${address}\nNotes: ${notes || "None"}\n\n` +
-        `Items:\n${itemsText}\n\nSubtotal: ${fmt(result.subtotal)}\nDelivery: Free\nTotal: ${fmt(result.total)}`;
+        `Customer: ${name}\nPhone: ${phone}\nEmail: ${email || "Not provided"}\n` +
+        `Address: ${address}\nNotes: ${notes || "None"}\n\n` +
+        `Items:\n${itemsText}\n\n` +
+        `Subtotal: ${fmt(result.subtotal)}\n` +
+        `Total: ${fmt(result.total)}`;
 
       setStatus(
-        `Order placed! Ref: ${result.order_ref}. Opening WhatsApp to confirm…`,
+         `Order placed! Ref: ${result.order_ref}. Redirecting to WhatsApp to confirm...`,
         "success",
       );
       cart = [];

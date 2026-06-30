@@ -460,7 +460,7 @@ img {
   padding: 24px 28px;
   border-bottom: 1px solid var(--light-gray);
   background: var(--forest);
-  flex-shrink: 0; /* header never shrinks or scrolls away */
+  flex-shrink: 0;
 }
 .cart-drawer-head h4 {
   font-family: var(--font-display);
@@ -603,12 +603,6 @@ img {
   color: red;
 }
 
-/* ---- THE FIX ----
-   .cart-footer used to be a plain block sibling with no scroll/shrink
-   behavior of its own. Once the checkout form (.checkout-panel) expanded
-   inside it, its total height could exceed the remaining drawer space,
-   pushing "Place Order" / "Continue Shopping" off-screen with no way to
-   reach them. Now it's a capped, independently scrollable flex child. */
 .cart-footer {
   flex-shrink: 0;
   max-height: 50vh; /* adjust as needed */
